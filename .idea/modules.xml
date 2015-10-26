@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TrainerList.iml" filepath="$PROJECT_DIR$/TrainerList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/TrainerList-grailsPlugins.iml" filepath="$PROJECT_DIR$/TrainerList-grailsPlugins.iml" />
+    </modules>
+  </component>
+</project>
