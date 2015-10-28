@@ -4,13 +4,12 @@
 		<meta name="layout" content="main"/>
 		<title>Welcome to Grails</title>
 
-		<script type="text/javascript">
-			function(email, senha){
-				if (data.mensagem == "Erro"){
-						alert("Email/Senha inválidos")
-				}
-			}
+		<g:javascript plugin="jquery" library="jquery" />
 
+		<script type="text/javascript">
+			function logar(data){
+				alert(data.mensagem)
+			}
 		</script>
 
 		<style type="text/css" media="screen">
@@ -124,17 +123,20 @@
 				</ul>
 			</div>
 
-			<div id="controller-list" role="navigation">
-				<div>
-					<label> e-mail </label>
-					<g:textField name="email" value=""/>  <br />
+			<g:formRemote name="formLogar" url="[controller:'personal', action:'logar']" onSuccess="logar(data)">
+				<div id="controller-list" role="navigation">
+					<div>
+						<label> e-mail </label>
+						<g:textField name="email" value=""/>  <br />
 
-					<label> Senha </label>
-					<g:textField name="senha" value=""/> <br /> <br />
+						<label> Senha </label>
+						<g:textField name="senha" value=""/> <br /> <br />
 
-					<input type="submit" name="entrar"  value="Logar" >
+					</div>
 				</div>
-			</div>
+
+				<input type="submit" name="salvar" value="Salvar" />
+			</g:formRemote>
 
 			<a href="./personal/create.gsp">Cadastrar-se</a>
 		</div>

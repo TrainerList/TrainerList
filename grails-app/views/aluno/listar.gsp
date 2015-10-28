@@ -26,6 +26,7 @@
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                     <td>
+
                         <g:link action="show" resource="${aluno}">
                             <image src="../assets/skin/database_table.png">
                         </g:link>

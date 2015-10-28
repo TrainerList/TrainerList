@@ -4,11 +4,29 @@ package Sistema
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.converters.JSON
 
 @Transactional(readOnly = true)
 class PersonalController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def logar(){
+        def resposta = [:]
+
+        Integer personalId
+
+        //personalId = Personal.findByEmailAndSenha(params.email,params.senha).id
+
+        if (personalId > 0){
+            resposta["mensagem"] = "Ok"
+            render(view:"/aluno/listar",model: [personalId:personalId])
+        } else {
+            resposta["mensagem"] = "e-mail/Senha inválido!"
+
+            render resposta as JSON
+        }
+    }
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -37,6 +55,8 @@ class PersonalController {
 
         personalInstance.save flush:true
 
+
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'personal.label', default: 'Personal'), personalInstance.id])
@@ -44,6 +64,8 @@ class PersonalController {
             }
             '*' { respond personalInstance, [status: CREATED] }
         }
+
+        render(view:"areaPersonal")
     }
 
     def edit(Personal personalInstance) {

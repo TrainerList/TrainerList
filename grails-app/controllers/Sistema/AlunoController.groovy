@@ -2,11 +2,16 @@ package Sistema
 
 class AlunoController {
 
-    def index() {
+    def index(Integer personalId) {
         def alunos = []
+        Integer alunosCount
 
-        alunos = Personal.findAll()
+        personalId = 1
 
-        render(view:"listar",model:[alunos: alunos,alunosCount: alunos.count()]);
+        alunos = Personal.findById(personalId).alunos
+
+        alunosCount = alunos.Count()
+
+        render(view:"listar",model:[alunos: alunos,alunosCount: alunosCount]);
     }
 }
