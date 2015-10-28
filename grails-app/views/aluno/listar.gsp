@@ -14,6 +14,11 @@
 </head>
 
 <body>
+    <div class="nav" role="navigation">
+        <ul>
+            <li> <a class="create" href="${createLink(controller: 'aluno', action: 'Index')}">Adicionar Alunos</a></li>
+        </ul>
+    </div>
 
     <table>
         <thead>
@@ -37,7 +42,7 @@
         </tbody>
     </table>
     <div class="pagination">
-        <g:paginate total="${alunosCountCount ?: 0}" />
+        <g:paginate total="${alunosCount ?: 0}" />
     </div>
 </body>
 </html>

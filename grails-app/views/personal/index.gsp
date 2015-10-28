@@ -23,26 +23,21 @@
 			<table>
 			<thead>
 					<tr>
-
 						<g:sortableColumn property="nome" title="${message(code: 'personal.nome.label', default: 'Nome')}" />
 
 						<g:sortableColumn property="email" title="${message(code: 'personal.email.label', default: 'Email')}" />
-
-						<g:sortableColumn property="id" title="${message(code: 'personal.id.label', default: ' ')}" />
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${personalInstanceList}" status="i" var="personalInstance">
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
+						<td>
+							<g:link class="edit" action="edit" resource="${personalInstance}">E</g:link>
 
-						<td>${fieldValue(bean: personalInstance, field: "nome")}</td>
+							${fieldValue(bean: personalInstance, field: "nome")}
+						</td>
 
 						<td>${fieldValue(bean: personalInstance, field: "email")}</td>
-
-						<td>
-							<g:link class="edit" action="edit" resource="${personalInstance}"><g:message
-							code="default.button.edit.label" default="Edit"/></g:link>
-						</td>
 					</tr>
 				</g:each>
 				</tbody>

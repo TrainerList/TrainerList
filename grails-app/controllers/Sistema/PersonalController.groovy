@@ -11,16 +11,19 @@ class PersonalController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def logar(){
+    def Logar(){
         def resposta = [:]
+        Personal personal
 
-        Integer personalId
+        personal = Personal.findByEmailAndSenha(params.email,params.senha.sha256)
 
-        //personalId = Personal.findByEmailAndSenha(params.email,params.senha).id
+        if (personal != null){
+            def alunos = []
 
-        if (personalId > 0){
+            alunos = personal.getAlunos()
+
             resposta["mensagem"] = "Ok"
-            render(view:"/aluno/listar",model: [personalId:personalId])
+            render(view:"/personal/areaPersonal")
         } else {
             resposta["mensagem"] = "e-mail/Senha inválido!"
 
