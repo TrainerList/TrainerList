@@ -16,7 +16,7 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             url = "jdbc:mysql://localhost/trainerList"
             username = "root"
-            password = ""
+            password = "carlos1191"
         }
         hibernate {
             show_sql = true
@@ -27,7 +27,7 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             url = "jdbc:mysql://localhost/trainerList"
             username = "root"
-            password = ""
+            password = "carlos1191"
         }
     }
     production {
@@ -35,7 +35,7 @@ environments {
             //dbCreate = "update"
             url = "jdbc:mysql://localhost/trainerList"
             username = "root"
-            password = ""
+            password = "carlos1191"
             properties {
                 maxActive = -1
                 minEvictableIdleTimeMillis=1800000

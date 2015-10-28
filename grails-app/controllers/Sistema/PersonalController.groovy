@@ -11,7 +11,7 @@ class PersonalController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def logar(){
+    def Logar(){
         def resposta = [:]
 
         Integer personalId
@@ -20,7 +20,7 @@ class PersonalController {
 
         if (personalId > 0){
             resposta["mensagem"] = "Ok"
-            render(view:"/aluno/listar",model: [personalId:personalId])
+            render(view:"edit",model: [personalId:personalId])
         } else {
             resposta["mensagem"] = "e-mail/Senha inválido!"
 

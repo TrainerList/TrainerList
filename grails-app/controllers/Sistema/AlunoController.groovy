@@ -4,13 +4,13 @@ class AlunoController {
 
     def index(Integer personalId) {
         def alunos = []
-        Integer alunosCount
+        int alunosCount
 
         personalId = 1
 
         alunos = Personal.findById(personalId).alunos
 
-        alunosCount = alunos.Count()
+        alunosCount = 0//alunos.Count()
 
         render(view:"listar",model:[alunos: alunos,alunosCount: alunosCount]);
     }

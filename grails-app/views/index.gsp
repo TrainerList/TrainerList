@@ -7,7 +7,7 @@
 		<g:javascript plugin="jquery" library="jquery" />
 
 		<script type="text/javascript">
-			function logar(data){
+			function Logar(data){
 				alert(data.mensagem)
 			}
 		</script>
@@ -123,7 +123,7 @@
 				</ul>
 			</div>
 
-			<g:formRemote name="formLogar" url="[controller:'personal', action:'logar']" onSuccess="logar(data)">
+			<g:formRemote name="formLogin" url="[controller:'personal', action:'Logar']" >
 				<div id="controller-list" role="navigation">
 					<div>
 						<label> e-mail </label>
@@ -131,12 +131,14 @@
 
 						<label> Senha </label>
 						<g:textField name="senha" value=""/> <br /> <br />
+						<input type="submit" name="Logar" value="Logar">
 
 					</div>
 				</div>
 
-				<input type="submit" name="salvar" value="Salvar" />
+
 			</g:formRemote>
+			<br />
 
 			<a href="./personal/create.gsp">Cadastrar-se</a>
 		</div>

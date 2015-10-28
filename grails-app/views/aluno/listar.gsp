@@ -14,6 +14,7 @@
 </head>
 
 <body>
+    <li> <a class="home" href="${createLink(uri: './personal/areaPersonal.gsp')}">Alunos</a></li>
 
     <table>
         <thead>
@@ -37,7 +38,7 @@
         </tbody>
     </table>
     <div class="pagination">
-        <g:paginate total="${alunosCountCount ?: 0}" />
+        <g:paginate total="${alunosCount ?: 0}" />
     </div>
 </body>
 </html>
