@@ -23,11 +23,7 @@ class PersonalController {
             alunos = personal.getAlunos()
 
             resposta["mensagem"] = "Ok"
-<<<<<<< HEAD
-            render(view:"/personal/areaPersonal")
-=======
             render(view:"edit",model: [personalId:personalId])
->>>>>>> origin/master
         } else {
             resposta["mensagem"] = "e-mail/Senha inválido!"
 
