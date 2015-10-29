@@ -8,6 +8,7 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class AlunoController {
 
+<<<<<<< HEAD
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -22,6 +23,11 @@ class AlunoController {
     def create() {
         respond new Aluno(params)
     }
+=======
+    def index(Integer personalId) {
+        def alunos = []
+        int alunosCount
+>>>>>>> origin/master
 
     @Transactional
     def save(Aluno alunoInstance) {
@@ -46,6 +52,7 @@ class AlunoController {
         }
     }
 
+<<<<<<< HEAD
     def edit(Aluno alunoInstance) {
         respond alunoInstance
     }
@@ -91,6 +98,9 @@ class AlunoController {
             '*'{ render status: NO_CONTENT }
         }
     }
+=======
+        alunosCount = 0//alunos.Count()
+>>>>>>> origin/master
 
     protected void notFound() {
         request.withFormat {

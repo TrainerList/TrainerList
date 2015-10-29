@@ -123,19 +123,32 @@
 				</ul>
 			</div>
 
+<<<<<<< HEAD
 			<g:formRemote name="formLogin" url="[controller:'personal', action:'Logar']" onSuccess="logar(data)">
+=======
+			<g:formRemote name="formLogin" url="[controller:'personal', action:'Logar']" >
+>>>>>>> origin/master
 				<div id="controller-list" role="navigation">
 					<div>
 						<label> e-mail </label>
 						<g:textField name="email" value=""/>  <br /> <br />
 
 						<label> Senha </label>
+<<<<<<< HEAD
 						<g:passwordField name="senha" value=""/> <br /> <br />
+=======
+						<g:textField name="senha" value=""/> <br /> <br />
+						<input type="submit" name="Logar" value="Logar">
+>>>>>>> origin/master
 
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<input type="submit" name="logar"  value="Logar" />
+=======
+
+>>>>>>> origin/master
 			</g:formRemote>
 			<br />
 

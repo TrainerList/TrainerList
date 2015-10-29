@@ -88,5 +88,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="TrainerList-grailsPlugins" />
+    <orderEntry type="library" name="grails-2.4.3 (7)" level="application" />
   </component>
 </module>

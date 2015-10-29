@@ -14,11 +14,15 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <div class="nav" role="navigation">
         <ul>
             <li> <a class="create" href="${createLink(controller: 'aluno', action: 'Index')}">Adicionar Alunos</a></li>
         </ul>
     </div>
+=======
+    <li> <a class="home" href="${createLink(uri: './personal/areaPersonal.gsp')}">Alunos</a></li>
+>>>>>>> origin/master
 
     <table>
         <thead>
