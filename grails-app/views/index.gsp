@@ -2,13 +2,17 @@
 <html>
 	<head>
 		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
+		<title>TrainerList</title>
 
 		<g:javascript plugin="jquery" library="jquery" />
 
 		<script type="text/javascript">
-			function Logar(data){
-				alert(data.mensagem)
+			function logar(data){
+				if data.mensagem == "Ok"{
+					alert("Ok")
+				} else {
+					alert("e-mail/senha inválido")
+				}
 			}
 		</script>
 
@@ -123,36 +127,27 @@
 				</ul>
 			</div>
 
-<<<<<<< HEAD
-			<g:formRemote name="formLogin" url="[controller:'personal', action:'Logar']" onSuccess="logar(data)">
-=======
-			<g:formRemote name="formLogin" url="[controller:'personal', action:'Logar']" >
->>>>>>> origin/master
+			<g:formRemote name="formLogin" url="[controller:'perfil', action:'logar']" onSuccess="logar(data)">
 				<div id="controller-list" role="navigation">
 					<div>
 						<label> e-mail </label>
 						<g:textField name="email" value=""/>  <br /> <br />
 
 						<label> Senha </label>
-<<<<<<< HEAD
 						<g:passwordField name="senha" value=""/> <br /> <br />
-=======
-						<g:textField name="senha" value=""/> <br /> <br />
-						<input type="submit" name="Logar" value="Logar">
->>>>>>> origin/master
-
 					</div>
 				</div>
 
-<<<<<<< HEAD
-				<input type="submit" name="logar"  value="Logar" />
-=======
-
->>>>>>> origin/master
+				<g:link controller="perfil" action="logar">
+					<input type="submit" name="logar"  value="Entrar" />
+				</g:link>
 			</g:formRemote>
+
 			<br />
 
 			<a href="./personal/create.gsp">Cadastrar-se</a>
+			<br /><a href="./personal/areaPersonal.gsp">areaPersonal</a>
+			<br /><a href="./aluno/areaAluno.gsp">areaAluno</a>
 		</div>
 	</body>
 </html>

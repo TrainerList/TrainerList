@@ -10,6 +10,10 @@ class AlunoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def areaAluno(){
+        render(view: "areaAluno")
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Aluno.list(params), model:[alunoInstanceCount: Aluno.count()]
