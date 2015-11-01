@@ -7,17 +7,15 @@ class PerfilController {
     def logar(){
         def resposta = [:]
 
-        Perfil perfil = Perfil.findBySenhaAndEmail(params.senha, params.email)
+        String senha = params.senha
+
+        Perfil perfil = Perfil.findBySenhaAndEmail(senha.encodeAsSHA256(), params.email)
 
         if (perfil != null){
             if (perfil.class == Personal){
-                Personal personal = Personal.findById(perfil.id)
-
-                render(view: "areaPersonal",model: [personal: personal])
+                redirect(controller: "personal",action: "areaPersonal", params: [id: perfil.id])
             } else if(perfil.class == Aluno){
-                Aluno aluno = Aluno.findById(perfil.id)
-
-                render(view: "/aluno/areaAluno",model: [aluno: aluno])
+                redirect(controller: "aluno", action: "areaAluno", params: [id: perfil.id])
             }
         } else {
             resposta["mensagem"] = "ERRO"
@@ -27,6 +25,6 @@ class PerfilController {
     }
 
     def index() {
-        render(view: "login")
+
     }
 }

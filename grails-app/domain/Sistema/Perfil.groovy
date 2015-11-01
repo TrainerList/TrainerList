@@ -14,5 +14,7 @@ class Perfil {
 
     static constraints = {
         email email:true, unique: true
+        dataCadastro nullable: true
+        status nullable: true
     }
 }

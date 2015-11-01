@@ -13,7 +13,7 @@
 
         <div class="nav" role="navigation">
             <ul>
-                <li> <a class="create" href="${createLink(uri: '/aluno/lista')}">Add Aluno</a></li>
+                <li> <g:link class="create" url="[controller:'aluno', action:'listar', params:'nome:null' ]" > Add Aluno </g:link> </li>
             </ul>
         </div>
 

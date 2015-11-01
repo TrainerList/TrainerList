@@ -13,10 +13,12 @@ class PersonalController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def areaPersonal(){
-        //Aluno alunos = Personal.findById(1).alunos
-        Aluno alunos = Aluno.list()
+        def alunos = Personal.findById(params.id).alunos
 
-        render(view:"areaPersonal", model: [alunos: alunos, alunosCount: alunos.count()])
+        alunos = Aluno.list()
+
+        //render(view:"areaPersonal", model: [alunos: alunos])
+        render(view:"areaPersonal", model: [alunos: alunos, alunosCount: alunos.size()])
     }
 
     def index(Integer max) {
@@ -39,20 +41,27 @@ class PersonalController {
             return
         }
 
+        personalInstance.senha = personalInstance.senha.encodeAsSHA256()
+
+        personalInstance.validate()
+
         if (personalInstance.hasErrors()) {
             respond personalInstance.errors, view:'create'
             return
         }
 
-        personalInstance.save flush:true
+        personalInstance = personalInstance.save flush:true
 
-        request.withFormat {
+        render(view:"areaPersonal",params:"id: personalInstance.id")
+
+/*        request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'personal.label', default: 'Personal'), personalInstance.id])
                 redirect personalInstance
             }
             '*' { respond personalInstance, [status: CREATED] }
         }
+*/
     }
 
     def edit(Personal personalInstance) {

@@ -31,24 +31,9 @@
         <g:message code="personal.senha.label" default="Senha"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="senha" required="" value="${personalInstance?.senha}"/>
+    <g:passwordField name="senha" required="" value="${personalInstance?.senha}"/>
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: personalInstance, field: 'dataCadastro', 'error')} required">
-    <label for="dataCadastro">
-        <g:message code="personal.dataCadastro.label" default="Data Cadastro"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:datePicker name="dataCadastro" precision="day" value="${personalInstance?.dataCadastro}"/>
 
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: personalInstance, field: 'status', 'error')} ">
-    <label for="status">
-        <g:message code="personal.status.label" default="Status"/>
-
-    </label>
-    <g:checkBox name="status" value="${personalInstance?.status}"/>
-</div>
 

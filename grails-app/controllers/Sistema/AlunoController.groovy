@@ -1,7 +1,5 @@
 package Sistema
 
-
-
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -9,6 +7,30 @@ import grails.transaction.Transactional
 class AlunoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+
+    def listar(){
+        def alunos = []
+
+        if (params.nome == null){
+            alunos = Aluno.list()
+        }else{
+            alunos = Aluno.findByNomeIlike(params.nome)
+        }
+
+        render(view: "listar", model: [alunos:alunos, alunosCount:alunos.size()])
+    }
+
+    def pesquisar(){
+        def alunos = []
+
+        if (params.nome == ""){
+            alunos = Aluno.list();
+        }else{
+            alunos = Aluno.findAllByNomeIlike(params.nome)
+        }
+
+        render(view: "listar", model: [alunos:alunos, alunosCount:alunos.size()])
+    }
 
     def areaAluno(){
         render(view: "areaAluno")
@@ -38,6 +60,10 @@ class AlunoController {
             respond alunoInstance.errors, view:'create'
             return
         }
+
+        alunoInstance.senha = alunoInstance.senha.encodeAsSHA256()
+
+        alunoInstance.validate()
 
         alunoInstance.save flush:true
 
