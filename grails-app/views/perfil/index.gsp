@@ -113,11 +113,8 @@
 
         <div id="controller-list" role="navigation">
             <div>
-
                 <g:if test="${mensagem} != ''" >
-
                     <label class="obrigatorio"> ${mensagem} </label>
-
                     <br /> <br />
                 </g:if>
 
@@ -126,22 +123,14 @@
 
                 <label> Senha </label>
                 <g:passwordField name="senha" value=""/> <br />
-
-
             </div>
         </div>
-
         <br />
-
         <input type="submit" name="logar"  value="Entrar"/>  <br />
     </g:form>
-
     <br />
-
-    <h5>
-        <a href="./personal/create.gsp">Cadastrar-se</a> <br /> <br />
-        <h6><label>  <a href="">Esqueci senha!</a> </label></h6>
-    </h5>
+    <h5><a href="./personal/create.gsp">Cadastrar-se</a></h5>  <br /> <br />
+    <h6><label>  <a href="">Esqueci senha!</a> </label></h6>
 </div>
 </body>
 </html>
