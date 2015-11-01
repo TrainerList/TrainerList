@@ -13,11 +13,10 @@ class PersonalController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def areaPersonal(){
-        def alunos = Personal.findById(params.id).alunos
+        def alunos = []
 
-        alunos = Aluno.list()
+        alunos = Personal.findById(params.id).alunos
 
-        //render(view:"areaPersonal", model: [alunos: alunos])
         render(view:"areaPersonal", model: [alunos: alunos, alunosCount: alunos.size()])
     }
 
@@ -41,8 +40,6 @@ class PersonalController {
             return
         }
 
-        personalInstance.senha = personalInstance.senha.encodeAsSHA256()
-
         personalInstance.validate()
 
         if (personalInstance.hasErrors()) {
@@ -50,9 +47,11 @@ class PersonalController {
             return
         }
 
+        personalInstance.senha = personalInstance.senha.encodeAsSHA256()
+
         personalInstance = personalInstance.save flush:true
 
-        render(view:"areaPersonal",params:"id: personalInstance.id")
+        redirect(controller: "personal",action: "areaPersonal", params: [id: personalInstance.id])
 
 /*        request.withFormat {
             form multipartForm {

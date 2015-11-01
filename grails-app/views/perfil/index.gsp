@@ -1,11 +1,4 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lucas
-  Date: 30/10/2015
-  Time: 21:43
---%>
-
-<%@ page contentType="text/html;charset=UTF-8" %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="layout" content="main"/>
@@ -14,12 +7,8 @@
     <g:javascript plugin="jquery" library="jquery" />
 
     <script type="text/javascript">
-        function sucesso(data){
-            if (data.mensagem == "OK"){
-                alert("Salvou com Sucesso")
-            } else {
-                alert("e-mail/senha Inválidos")
-            }
+        function loginInvalido(){
+            Alert("e-mail/senha invalido!")
         }
     </script>
 
@@ -85,6 +74,11 @@
         margin: 0.25em 0;
     }
 
+    label.obrigatorio  {
+        font-size: 12px;
+        color: #cc0000;
+    }
+
     @media screen and (max-width: 480px) {
         #status {
             display: none;
@@ -100,25 +94,54 @@
     }
     </style>
 </head>
-
 <body>
-    <br>
-    <g:formRemote name="formLogin" url="[action:'logar']" onSuccess="logar(data)">
+<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
+
+<div id="page-body" role="main">
+
+
+    <div id="controller-list" role="navigation">
+        <h2>Available Controllers:</h2>
+        <ul>
+            <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
+                <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
+            </g:each>
+        </ul>
+    </div>
+
+    <g:form name="formLogin" url="[controller:'perfil', action:'logar']" >
+
         <div id="controller-list" role="navigation">
             <div>
+
+                <g:if test="${mensagem} != ''" >
+
+                    <label class="obrigatorio"> ${mensagem} </label>
+
+                    <br /> <br />
+                </g:if>
+
                 <label> e-mail </label>
-                <g:textField name="email" value=""/>  <br /> <br />
+                <g:textField name="email" value="${emial}" />  <br /> <br />
 
                 <label> Senha </label>
-                <g:passwordField name="senha" value=""/> <br /> <br />
+                <g:passwordField name="senha" value=""/> <br />
+
+
             </div>
         </div>
 
-        <input type="submit" name="logar"  value="Entrar" />
-    </g:formRemote>
+        <br />
+
+        <input type="submit" name="logar"  value="Entrar"/>  <br />
+    </g:form>
 
     <br />
 
-    <a href="./personal/create.gsp">Cadastrar-se</a>
+    <h5>
+        <a href="./personal/create.gsp">Cadastrar-se</a> <br /> <br />
+        <h6><label>  <a href="">Esqueci senha!</a> </label></h6>
+    </h5>
+</div>
 </body>
 </html>

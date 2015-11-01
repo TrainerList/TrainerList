@@ -31,7 +31,7 @@
         <g:message code="personal.senha.label" default="Senha"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:passwordField name="senha" required="" value="${personalInstance?.senha}"/>
+    <g:passwordField name="senha" required="" value="${personalInstance?.senha}" maxlength="20" />
 
 </div>
 

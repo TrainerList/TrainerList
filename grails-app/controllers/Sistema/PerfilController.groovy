@@ -18,13 +18,11 @@ class PerfilController {
                 redirect(controller: "aluno", action: "areaAluno", params: [id: perfil.id])
             }
         } else {
-            resposta["mensagem"] = "ERRO"
-
-            render resposta as JSON
+            render(view: "index", model: [mensagem: "e-mail/senha invalido!", email:params.email])
         }
     }
 
     def index() {
-
+        render(action: "index", model:[mensagem:""])
     }
 }

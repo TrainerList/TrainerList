@@ -8,12 +8,8 @@
 
 		<script type="text/javascript">
 			function Logar(data){
-				alert(data)
-
-				if (data != "false"){
-					location.href="/personal/areaPersonal"
-				} else {
-					alert("e-mail/senha inválido")
+				if (data.mensagem == "ERRO"){
+					Alert("e-mail/senha invalido!")
 				}
 			}
 		</script>
@@ -110,18 +106,28 @@
 				</ul>
 			</div>
 
-			<g:form name="formLogin" url="[controller:'perfil', action:'logar']" onSuccess="Logar(data)">
+			<g:form name="formLogin" url="[controller:'perfil', action:'logar']" >
+
 				<div id="controller-list" role="navigation">
 					<div>
+
+						<label> ${mensagem} </label>
+
+
 						<label> e-mail </label>
-						<g:textField name="email" value=""/>  <br /> <br />
+						<g:textField name="email" value="${emial}"/>  <br /> <br />
 
 						<label> Senha </label>
-						<g:passwordField name="senha" value=""/> <br /> <br />
+						<g:passwordField name="senha" value=""/> <br />
+
+						<h6><label>  <a href="">Esqueci senha!</a> </label>
+						 </h6>
 					</div>
 				</div>
 
-				<input type="submit" name="logar"  value="Entrar" />
+				<br /> <br />
+
+				<input type="submit" name="logar"  value="Entrar"/>
 
 			</g:form>
 
@@ -129,7 +135,6 @@
 
 			<h5>
 				<a href="./personal/create.gsp">Cadastrar-se</a> <br />
-				<a href="">Esqueci senha!</a>
 			</h5>
 		</div>
 	</body>
