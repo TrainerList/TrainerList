@@ -129,8 +129,8 @@
         <input type="submit" name="logar"  value="Entrar"/>  <br />
     </g:form>
     <br />
-    <h5><a href="./personal/create.gsp">Cadastrar-se</a></h5>  <br /> <br />
-    <h6><label>  <a href="">Esqueci senha!</a> </label></h6>
+    <h5><a href="./personal/create.gsp">Cadastrar-se</a></h5>  <br />
+    <h6><a href="">Esqueci senha!</a></h6>
 </div>
 </body>
 </html>

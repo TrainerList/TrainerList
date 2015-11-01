@@ -13,11 +13,23 @@ class AlunoController {
 
         if (params.nome == null){
             alunos = Aluno.list()
-        }else{
-            alunos = Aluno.findByNomeIlike(params.nome)
+        }else {
+            alunos = Aluno.findAllByNomeIlike(params.nome)
         }
 
         render(view: "listar", model: [alunos:alunos, alunosCount:alunos.size()])
+    }
+
+    def listarById(){
+        def alunos = []
+
+        if (params.id == null){
+            alunos = Aluno.list()
+        }else {
+            alunos = Aluno.findById(params.id)
+        }
+
+        render(view: "listar", model: [alunos:alunos,alunosCount:0])
     }
 
     def pesquisar(){
@@ -29,7 +41,7 @@ class AlunoController {
             alunos = Aluno.findAllByNomeIlike(params.nome)
         }
 
-        render(view: "listar", model: [alunos:alunos, alunosCount:alunos.size()])
+        render(action: "listarById", model: [alunos:alunos, alunosCount:alunos.size()])
     }
 
     def areaAluno(){
@@ -65,15 +77,18 @@ class AlunoController {
 
         alunoInstance.validate()
 
-        alunoInstance.save flush:true
+        alunoInstance = alunoInstance.save flush:true
 
+        redirect(controller: "aluno",action: "listarById", params: [id: alunoInstance.id])
+
+        /*
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'aluno.label', default: 'Aluno'), alunoInstance.id])
                 redirect alunoInstance
             }
             '*' { respond alunoInstance, [status: CREATED] }
-        }
+        }*/
     }
 
     def edit(Aluno alunoInstance) {
