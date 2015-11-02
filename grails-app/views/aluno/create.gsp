@@ -4,6 +4,16 @@
     <meta name="layout" content="main">
     <g:set var="entityName" value="${message(code: 'aluno.label', default: 'Aluno')}"/>
     <title><g:message code="default.create.label" args="[entityName]"/></title>
+
+    <script>
+        function valida(form) {
+            if (form.senha.value=="" || form.senha.value.length < 8) {
+                alert("Senhra requer entre 8 e 20 caracteres");
+                form.senha.focus();
+                return false;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -23,7 +33,7 @@
             </g:eachError>
         </ul>
     </g:hasErrors>
-    <g:form url="[resource: alunoInstance, action: 'save']">
+    <g:form url="[resource: alunoInstance, action: 'save']" onsubmit="return valida(this);">
         <fieldset class="form">
             <g:render template="form"/>
         </fieldset>

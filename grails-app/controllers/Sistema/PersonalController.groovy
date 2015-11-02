@@ -20,6 +20,26 @@ class PersonalController {
         render(view:"areaPersonal", model: [alunos: alunos, alunosCount: alunos.size()])
     }
 
+    def adicionarAlunoLista(){
+        Personal personal = Personal.findById(session.userId)
+
+        if (personal != null){
+            Aluno aluno = Aluno.findById(params.id)
+
+            if (aluno != null){
+                personal.alunos.add(aluno)
+
+                personal.validate()
+
+                if (!personal.hasErrors()){
+                    personal.save(flush: true)
+
+                    render(view: "areaPersonal", params:[id: personal.id])
+                }
+            }
+        }
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Personal.list(params), model:[personalInstanceCount: Personal.count()]

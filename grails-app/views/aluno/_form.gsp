@@ -36,7 +36,7 @@
         <g:message code="aluno.senha.label" default="Senha"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="senha" required="" value="${alunoInstance?.senha}"/>
+    <g:passwordField name="senha" required="" value="${alunoInstance?.senha}"/>
 
 </div>
 
@@ -80,15 +80,14 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'observacao', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'observacao', 'error')}">
     <label for="observacao">
         <g:message code="aluno.observacao.label" default="Observacao"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="observacao" required="" value="${alunoInstance?.observacao}"/>
+    <g:textArea name="observacao" value="${alunoInstance?.observacao}"> </g:textArea>
 
 </div>
-
 
 <div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'treinos', 'error')} ">
     <label for="treinos">

@@ -18,13 +18,19 @@
         </ul>
     </div>
 <body>
-    <g:form url="[action: 'pesquisar']">
-        <fieldset class="buttons">
-            Aluno <input type="text" name="nome" placeholder="Nome do Aluno" ></li>
-
-        <g:submitButton name="create" class="save" value="Pesq"/>
-        </fieldset>
+    <g:form url="[action: 'create']">
+        <div class="nav" role="navigation">
+            <ul>
+                <li><g:link class="create" action="create">Novo Aluno</g:link></li>
+            </ul>
+        </div>
     </g:form>
+
+    <fieldset class="buttons">
+        Aluno <input type="text" name="nome" placeholder="Nome do Aluno" ></li>
+
+    <g:submitButton name="pesquisar" class="save" value="Pesq"/>
+    </fieldset>
 
     <g:if test="${alunos.size() > 0}" >
 
@@ -39,10 +45,9 @@
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                         <td>
-                            <g:link action="show" resource="${aluno}">
-                                <image src="../assets/skin/database_table.png">
-                            </g:link>
-                            ${fieldValue(bean:aluno, field: "nome")}
+                            <g:link controller="personal" action="adicionarAlunoLista" id="${aluno.id}"  >
+                                +
+                            </g:link> ${fieldValue(bean:aluno, field: "nome")}
                         </td>
                     </tr>
                 </g:each>

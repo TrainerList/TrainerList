@@ -13,6 +13,10 @@ class PerfilController {
 
         if (perfil != null){
             if (perfil.status == true){
+                def userId = session["userId"]
+
+                session["userId"] = perfil.id
+
                 if (perfil.class == Personal){
                     redirect(controller: "personal",action: "areaPersonal", params: [id: perfil.id])
                 } else if(perfil.class == Aluno){
