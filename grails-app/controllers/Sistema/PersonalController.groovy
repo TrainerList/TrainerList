@@ -62,10 +62,10 @@ class PersonalController {
         avaliacaoFisica.massaMuscular = 10
         avaliacaoFisica.pressao = 12.8
 
-        aluno.avalicoesFisicas.add(aluno)
-        aluno.treinos.add(treino)
+        aluno.addToAvalicoesFisicas(avaliacaoFisica)
+        aluno.addToTreinos(treino)
 
-        personal.alunos.add(aluno)
+        personal.addToAlunos(aluno)
 
         personal.validate()
 
