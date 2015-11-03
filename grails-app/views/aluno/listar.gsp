@@ -26,11 +26,13 @@
         </div>
     </g:form>
 
-    <fieldset class="buttons">
-        Aluno <input type="text" name="nome" placeholder="Nome do Aluno" ></li>
+    <g:form url="[action: 'listar']">
+        <fieldset class="buttons">
+            Aluno <input type="text" name="nome" placeholder="Nome do Aluno" ></li>
 
-    <g:submitButton name="pesquisar" class="save" value="Pesq"/>
-    </fieldset>
+        <g:submitButton name="pesquisar" class="save" value="Pesq"/>
+        </fieldset>
+    </g:form>
 
     <g:if test="${alunos.size() > 0}" >
         <table>

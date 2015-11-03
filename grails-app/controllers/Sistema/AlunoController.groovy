@@ -11,7 +11,7 @@ class AlunoController {
     def listar(){
         def alunos = []
 
-        if (params.nome == null){
+        if (params.nome == null || params.nome == ""){
             alunos = Aluno.findAllByStatus(true)
         }else {
             alunos = Aluno.findAllByNomeIlikeAndStatus(params.nome, true)

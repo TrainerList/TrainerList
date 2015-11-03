@@ -8,7 +8,7 @@ class Aluno extends Perfil {
     Boolean diabetico
     Boolean hipertenso
 
-    static hasMany = [treinos: Treino, avalicoesFisicas: AvaliacaoFisica]
+    static hasMany = [personais:Personal, treinos: Treino, avalicoesFisicas: AvaliacaoFisica]
 
     static belongsTo = [Personal]
 

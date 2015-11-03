@@ -83,12 +83,14 @@ class PersonalController {
     def adicionarAlunoLista(){
         Personal personal = Personal.findById(session.userId)
 
-        personal.alunos = Personal.findAllById(personal.id).alunos
+        //personal.alunos = Personal.findAllById(personal.id).alunos
 
         if (personal != null){
             Aluno aluno = Aluno.findById(params.id)
 
             if (aluno != null){
+                //aluno.addToPersonais(personal)
+
                 personal.addToAlunos(aluno)
 
                 personal.validate()
