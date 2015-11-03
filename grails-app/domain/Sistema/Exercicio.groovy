@@ -7,6 +7,7 @@ class Exercicio {
     String nome
     String descricao
     String video
+    Boolean cardio
     Boolean status
 
     static hasMany = [imagensExercicio: ImagemExercicio, classesExercicio : ClasseExercicio]

@@ -1,13 +1,17 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="main"/>
-    <title>Aluno</title>
+    <meta name="layout" content="main">
 
-    <g:javascript plugin="jquery" library="jquery" />
+    <title>Alunos</title>
 </head>
-
 <body>
+    <div class="nav" role="navigation">
+        <ul>
+            <li> <a class="create" href="${createLink(controller: 'treino', action: 'create')}">Adicionar Treino</a></li>
+        </ul>
+    </div>
+
     <g:if test="${treinos.size() > 0}" >
         <table>
             <thead>

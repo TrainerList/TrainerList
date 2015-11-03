@@ -28,9 +28,11 @@
                 <g:each in="${alunos}" status="i" var="aluno">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                         <td>
-                            <g:link class="" action="edit" resource="${aluno}">E</g:link>
-
                             ${fieldValue(bean: aluno, field: "nome")}
+
+                            <g:link controller="treino" action="listarTreino" id="${aluno.id}" >T.</g:link>
+                            <!-- controller="AvaliacaoFisica" -->
+                            <g:link  action="edit" id="${aluno.id}">A.F.</g:link>
                         </td>
                     </tr>
                 </g:each>

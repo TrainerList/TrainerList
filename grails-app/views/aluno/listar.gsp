@@ -33,7 +33,6 @@
     </fieldset>
 
     <g:if test="${alunos.size() > 0}" >
-
         <table>
             <thead>
                 <tr>
@@ -45,9 +44,8 @@
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                         <td>
-                            <g:link controller="personal" action="adicionarAlunoLista" id="${aluno.id}"  >
-                                +
-                            </g:link> ${fieldValue(bean:aluno, field: "nome")}
+                            <g:link controller="personal" action="adicionarAlunoLista" id="${aluno.id}" >Add.</g:link>
+                            ${fieldValue(bean:aluno, field: "nome")}
                         </td>
                     </tr>
                 </g:each>

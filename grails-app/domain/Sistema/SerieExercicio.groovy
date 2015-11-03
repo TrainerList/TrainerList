@@ -10,6 +10,13 @@ class SerieExercicio {
     Integer minutos
     Boolean status
 
+    static belongsTo = [Treino]
+
     static constraints = {
+        status nullable: true
+    }
+
+    def beforeInsert(){
+        status = true
     }
 }

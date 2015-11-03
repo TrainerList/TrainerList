@@ -12,6 +12,66 @@ class PersonalController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def teste(){
+        Aluno aluno = Aluno.findById(4)
+        Personal personal = Personal.findById(1)
+
+        Exercicio exerc = Exercicio.findById(1)
+
+        SerieExercicio serie = new SerieExercicio()
+
+        serie.exercicio = exerc
+        serie.ateFalha = false
+        serie.minutos = 0
+        serie.quantidadeRepeticao = 3
+        serie.repeticao = 12
+        serie.status = true
+        serie.tempoIntervalo = 60
+
+
+        Treino treino = new Treino()
+
+        treino.addToSeriesExercicios(serie)
+        treino.aluno = aluno
+        treino.status = true
+        treino.dataInicio = new Date()
+        treino.dataTermino = new Date() + 30
+        treino.descricao = "teste"
+
+        AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica()
+
+        avaliacaoFisica.status = true
+        avaliacaoFisica.aluno = aluno
+        avaliacaoFisica.personal = personal
+        avaliacaoFisica.status = true
+        avaliacaoFisica.data = new Date()
+        avaliacaoFisica.abdomen = 10
+        avaliacaoFisica.antebracoDireito = 10
+        avaliacaoFisica.antebracoEsquerdo = 10
+        avaliacaoFisica.bicepsDireito = 10
+        avaliacaoFisica.bicepsEsquerdo = 10
+        avaliacaoFisica.cintura = 10
+        avaliacaoFisica.coxaDireita = 10
+        avaliacaoFisica.coxaEsquerda = 10
+        avaliacaoFisica.panturilhaDireita = 10
+        avaliacaoFisica.panturilhaEsquerda = 10
+        avaliacaoFisica.peito = 10
+        avaliacaoFisica.peso = 100
+        avaliacaoFisica.quadril = 10
+        avaliacaoFisica.gorduraCorporal = 10
+        avaliacaoFisica.massaMuscular = 10
+        avaliacaoFisica.pressao = 12.8
+
+        aluno.avalicoesFisicas.add(aluno)
+        aluno.treinos.add(treino)
+
+        personal.alunos.add(aluno)
+
+        personal.validate()
+
+        personal.save(flush: true)
+    }
+
     def areaPersonal(){
         def alunos = []
 
@@ -23,11 +83,13 @@ class PersonalController {
     def adicionarAlunoLista(){
         Personal personal = Personal.findById(session.userId)
 
+        personal.alunos = Personal.findAllById(personal.id).alunos
+
         if (personal != null){
             Aluno aluno = Aluno.findById(params.id)
 
             if (aluno != null){
-                personal.alunos.add(aluno)
+                personal.addToAlunos(aluno)
 
                 personal.validate()
 
@@ -70,6 +132,10 @@ class PersonalController {
         personalInstance.senha = personalInstance.senha.encodeAsSHA256()
 
         personalInstance = personalInstance.save flush:true
+
+        def userId = session["userId"]
+
+        session["userId"] = personalInstance.id
 
         redirect(controller: "personal",action: "areaPersonal", params: [id: personalInstance.id])
 

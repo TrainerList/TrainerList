@@ -10,7 +10,10 @@ class Aluno extends Perfil {
 
     static hasMany = [treinos: Treino, avalicoesFisicas: AvaliacaoFisica]
 
+    static belongsTo = [Personal]
+
     static constraints = {
+        observacao nullable: true
     }
 
     static mapping = {

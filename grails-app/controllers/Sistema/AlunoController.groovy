@@ -12,9 +12,9 @@ class AlunoController {
         def alunos = []
 
         if (params.nome == null){
-            alunos = Aluno.list()
+            alunos = Aluno.findAllByStatus(true)
         }else {
-            alunos = Aluno.findAllByNomeIlike(params.nome)
+            alunos = Aluno.findAllByNomeIlikeAndStatus(params.nome, true)
         }
 
         render(view: "listar", model: [alunos:alunos, alunosCount:alunos.size()])
@@ -24,7 +24,7 @@ class AlunoController {
         def alunos = []
 
         if (params.id == null){
-            alunos = Aluno.list()
+            alunos = Aluno.findAllByStatus(true)
         }else {
             alunos = Aluno.findById(params.id)
         }
@@ -36,16 +36,20 @@ class AlunoController {
         def alunos = []
 
         if (params.nome == ""){
-            alunos = Aluno.list();
+            alunos = Aluno.findAllByStatus(true)
         }else{
-            alunos = Aluno.findAllByNomeIlike(params.nome)
+            alunos = Aluno.findAllByNomeIlikeAndStatus(params.nome, true)
         }
 
         render(action: "listarById", model: [alunos:alunos, alunosCount:alunos.size()])
     }
 
     def areaAluno(){
-        render(view: "areaAluno")
+        Aluno aluno = Aluno.findById(session.userId)
+
+        Treino treinos = Treino.findAllByAluno(aluno)
+        
+        render(view: "areaAluno",Model:[treinos:treinos])
     }
 
     def index(Integer max) {

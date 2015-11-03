@@ -11,5 +11,10 @@ class Treino {
     static hasMany = [seriesExercicios: SerieExercicio]
 
     static constraints = {
+        status nullable: true
+    }
+
+    def beforeInsert(){
+        status = true
     }
 }
