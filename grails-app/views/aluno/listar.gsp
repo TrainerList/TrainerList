@@ -28,7 +28,7 @@
 
     <g:form url="[action: 'listar']">
         <fieldset class="buttons">
-            Aluno <input type="text" name="nome" placeholder="Nome do Aluno" ></li>
+            Aluno <input type="text" name="nome" placeholder="Nome do Aluno" >
 
         <g:submitButton name="pesquisar" class="save" value="Pesq"/>
         </fieldset>

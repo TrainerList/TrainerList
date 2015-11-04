@@ -4,6 +4,8 @@
     <meta name="layout" content="main">
 
     <title>Alunos</title>
+
+
 </head>
 <body>
     <div class="nav" role="navigation">
@@ -23,10 +25,10 @@
             <g:each in="${treinos}" status="i" var="treino">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                     <td>
-                        <g:link action="edit" resource="${treino}">Ed.</g:link>
                         ${fieldValue(bean:treino, field: "descricao")}
+                        <g:link action="edit" resource="${treino}" >Ed.</g:link>
 
-                        <g:link action="inativar" Id="${treino.id}">Rem.</g:link>
+                        <g:link action="inativar" id="${treino.id}" onclick="return confirm('Remover este Treino?');" >Rem.</g:link>
                     </td>
                 </tr>
             </g:each>

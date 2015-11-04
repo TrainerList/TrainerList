@@ -33,7 +33,8 @@
 	<br />
 	<div class="nav" role="navigation">
 		<ul>
-			<li><g:link class="create" controller="serieExercicio" action="create"> Add Série </g:link></li>
+			<li><g:link class="create" controller="serieExercicio" action="create">Add Série</g:link>
+			</li>
 		</ul>
 
 		<br />
@@ -41,25 +42,27 @@
 			<tbody>
 			<g:each in="${treinoInstance.seriesExercicios}" status="i" var="seriesExercicio">
 				<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
 					<td>
-						<tr> ${seriesExercicio.exercicio.nome}</tr>
-						<tr>
-							<g:if test="${seriesExercicio.exercicio.cardio} == false">
-								<g:if test="${seriesExercicio.exercicio.ateFalha} == true">
-									ate a falha
-								</g:if>
-								<g:else>
-									${seriesExercicio.exercicio.repeticao} X ${seriesExercicio.exercicio.quantidadeRepeticao}
-								</g:else>
+						${seriesExercicio.exercicio.nome}
+						<br />
+						<g:if test="${seriesExercicio.exercicio.cardio} == false">
+							<g:if test="${seriesExercicio.ateFalha} == 'true'">
+								ate a falha
 							</g:if>
 							<g:else>
-								${seriesExercicio.exercicio.minutos} Minutos
+								${seriesExercicio.repeticao} X ${seriesExercicio.quantidadeRepeticao}
 							</g:else>
-						</tr>
+						</g:if>
+						<g:else>
+							${seriesExercicio.minutos} Minutos
+						</g:else>
 
+						<g:link action="edit" resource="${treino.seriesExercicios}" >Ed.</g:link>
+
+						<g:if test="${treino.seriesExercicios.id} != null">
+							<g:link action="inativar" id="${treino.seriesExercicios.id}" onclick="return confirm('Confirmar Inativação?');" >Rem.</g:link>
+						</g:if>
 					</td>
-
 				</tr>
 			</g:each>
 			</tbody>

@@ -12,6 +12,7 @@ class Treino {
 
     static constraints = {
         status nullable: true
+        aluno nullable: true
     }
 
     def beforeInsert(){

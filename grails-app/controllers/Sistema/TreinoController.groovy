@@ -10,22 +10,26 @@ class TreinoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     static Aluno aluno
+    static Treino newTreino
+    static Boolean editar = false
 
     def listarTreino() {
         if (aluno == null) {
             aluno = Aluno.findById(params.id)
+
+            if (aluno != null) {
+                aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
+            }
         }
 
-        if (aluno != null) {
-            Treino treinos = []
-
-            treinos = Treino.findAllByAluno(aluno)
-
-            render(view: "listar",model: [treinos:treinos])
-        }
+        render(view: "listar",model: [treinos: aluno.treinos])
     }
 
     def adicionarSerieExercicio(){
+        if (newTreino == null){
+            newTreino = new Treino()
+        }
+
         Exercicio exerc = Exercicio.findById(params.int("exercicioId"))
 
         SerieExercicio serieExercicio = new SerieExercicio()
@@ -43,9 +47,30 @@ class TreinoController {
         serieExercicio.status = true
         serieExercicio.exercicio = exerc
 
-        treinos.addToSeriesExercicios(serieExercicio)
+        newTreino.addToSeriesExercicios(serieExercicio)
 
-        render(view: "listarTreino")
+        if (editar == true){
+            render(view: "edit", model: [treinoInstance:newTreino])
+        } else {
+            render(view: "create", model: [treinoInstance:newTreino])
+        }
+    }
+
+    def inativar(){
+        Treino treino = Treino.findById(params.id)
+
+        if (treino != null){
+            treino.status = false
+
+            treino.validate()
+
+            // Verificar erro "Connection is read-only. Queries leading to data modification are not allowed"
+            //treino.save(flush: true)
+
+            aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
+
+            redirect(action: "listarTreino")// render( : "listar",model: [treinos: aluno.treinos])
+        }
     }
 
     def index(Integer max) {
@@ -58,24 +83,37 @@ class TreinoController {
     }
 
     def create() {
-        respond new Treino(params)
+        editar = false
+
+        newTreino = new Treino()
+
+        render(view: "create", model: [treinoInstance:newTreino])
+        //respond new Treino(params)
     }
 
     @Transactional
     def save(Treino treinoInstance) {
-        if (treinoInstance == null) {
+        /*if (treinoInstance == null) {
             notFound()
             return
         }
 
         if (treinoInstance.hasErrors()) {
-            respond treinoInstance.errors, view:'create'
+            respond treinoInstance.errors, view:'create', model: [treinoInstance:treinoInstance]
             return
-        }
+        }*/
 
-        treinoInstance.aluno = aluno
+        newTreino.aluno = aluno
+        newTreino.descricao   = treinoInstance.descricao
+        newTreino.dataInicio  = treinoInstance.dataInicio
+        newTreino.dataTermino = treinoInstance.dataTermino
 
-        treinoInstance.save flush:true
+        aluno.addToTreinos(newTreino)
+
+        newTreino.validate()
+
+        newTreino.save(flash: true)
+        //treinoInstance.save flush:true
 
         render(view: "listarTreino")
         /*
@@ -89,7 +127,13 @@ class TreinoController {
     }
 
     def edit(Treino treinoInstance) {
-        respond treinoInstance
+        editar = true
+
+        if (newTreino == null){
+            newTreino = treinoInstance
+        }
+
+        respond newTreino
     }
 
     @Transactional
