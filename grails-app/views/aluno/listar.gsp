@@ -11,6 +11,8 @@
     <meta name="layout" content="main">
 
     <title>Alunos</title>
+
+    <g:javascript plugin="jquery" library="jquery" />
 </head>
     <div class="nav" role="navigation">
         <ul>
@@ -26,11 +28,16 @@
         </div>
     </g:form>
 
-    <g:form url="[action: 'listar']">
+    <g:form url="[action: 'listar']" >
         <fieldset class="buttons">
             Aluno <input type="text" name="nome" placeholder="Nome do Aluno" >
 
         <g:submitButton name="pesquisar" class="save" value="Pesq"/>
+
+        <g:if test="${mensagem} != ''" >
+           <br /> ${mensagem}
+        </g:if>
+
         </fieldset>
     </g:form>
 
@@ -46,7 +53,7 @@
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                         <td>
-                            <g:link controller="personal" action="adicionarAlunoLista" id="${aluno.id}" >Add.</g:link>
+                            <g:link controller="aluno" action="adicionarAlunoLista" id="${aluno.id}">Add.</g:link>
                             ${fieldValue(bean:aluno, field: "nome")}
                         </td>
                     </tr>
@@ -59,7 +66,9 @@
     </g:if>
     <g:else>
         <br />
-        Nenhum aluno encontrado!
+        <label>
+            Nenhum aluno encontrado!
+        </label>
     </g:else>
 </body>
 </html>

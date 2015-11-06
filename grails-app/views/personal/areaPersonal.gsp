@@ -33,6 +33,7 @@
                             <g:link controller="treino" action="listarTreino" id="${aluno.id}" >T.</g:link>
                             <!-- controller="AvaliacaoFisica" -->
                             <g:link  action="edit" id="${aluno.id}">A.F.</g:link>
+                            <g:link  action="inativarAluno" id="${aluno.id}" onclick="return confirm('Realmente quer remover o Aluno?');" >Rem.</g:link>
                         </td>
                     </tr>
                 </g:each>

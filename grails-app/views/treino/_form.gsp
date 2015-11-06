@@ -47,7 +47,7 @@
 						<br />
 						<g:if test="${seriesExercicio.exercicio.cardio}">
 							<g:if test="${seriesExercicio.ateFalha}">
-								ate a falha
+								ate a falha + ${seriesExercicio.ateFalha}
 							</g:if>
 							<g:else>
 								${seriesExercicio.repeticao} X ${seriesExercicio.quantidadeRepeticao}
@@ -57,6 +57,11 @@
 							${seriesExercicio.minutos} Minutos
 						</g:else>
 
+						<g:link action="edit" resource="${treino.seriesExercicios}" >Ed.</g:link>
+
+						<g:if test="${treino.seriesExercicios.id} != null">
+							<g:link action="inativar" id="${treino.seriesExercicios.id}" onclick="return confirm('Confirmar Inativação?');" >Rem.</g:link>
+						</g:if>
 					</td>
 				</tr>
 			</g:each>

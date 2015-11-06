@@ -7,70 +7,10 @@ import grails.transaction.Transactional
 import grails.converters.JSON
 import Sistema.Aluno
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class PersonalController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
-    def teste(){
-        Aluno aluno = Aluno.findById(4)
-        Personal personal = Personal.findById(1)
-
-        Exercicio exerc = Exercicio.findById(1)
-
-        SerieExercicio serie = new SerieExercicio()
-
-        serie.exercicio = exerc
-        serie.ateFalha = false
-        serie.minutos = 0
-        serie.quantidadeRepeticao = 3
-        serie.repeticao = 12
-        serie.status = true
-        serie.tempoIntervalo = 60
-
-
-        Treino treino = new Treino()
-
-        treino.addToSeriesExercicios(serie)
-        treino.aluno = aluno
-        treino.status = true
-        treino.dataInicio = new Date()
-        treino.dataTermino = new Date() + 30
-        treino.descricao = "teste"
-
-        AvaliacaoFisica avaliacaoFisica = new AvaliacaoFisica()
-
-        avaliacaoFisica.status = true
-        avaliacaoFisica.aluno = aluno
-        avaliacaoFisica.personal = personal
-        avaliacaoFisica.status = true
-        avaliacaoFisica.data = new Date()
-        avaliacaoFisica.abdomen = 10
-        avaliacaoFisica.antebracoDireito = 10
-        avaliacaoFisica.antebracoEsquerdo = 10
-        avaliacaoFisica.bicepsDireito = 10
-        avaliacaoFisica.bicepsEsquerdo = 10
-        avaliacaoFisica.cintura = 10
-        avaliacaoFisica.coxaDireita = 10
-        avaliacaoFisica.coxaEsquerda = 10
-        avaliacaoFisica.panturilhaDireita = 10
-        avaliacaoFisica.panturilhaEsquerda = 10
-        avaliacaoFisica.peito = 10
-        avaliacaoFisica.peso = 100
-        avaliacaoFisica.quadril = 10
-        avaliacaoFisica.gorduraCorporal = 10
-        avaliacaoFisica.massaMuscular = 10
-        avaliacaoFisica.pressao = 12.8
-
-        aluno.addToAvalicoesFisicas(avaliacaoFisica)
-        aluno.addToTreinos(treino)
-
-        personal.addToAlunos(aluno)
-
-        personal.validate()
-
-        personal.save(flush: true)
-    }
 
     def areaPersonal(){
         def alunos = []
@@ -80,10 +20,30 @@ class PersonalController {
         render(view:"areaPersonal", model: [alunos: alunos, alunosCount: alunos.size()])
     }
 
-    def adicionarAlunoLista(){
+    def inativarAluno(){
         Personal personal = Personal.findById(session.userId)
 
-        //personal.alunos = Personal.findAllById(personal.id).alunos
+        if (personal != null){
+            Aluno aluno = Aluno.findById(params.id)
+
+            if (aluno != null){
+                personal.removeFromAlunos(aluno)
+
+                personal.validate()
+
+                if (!personal.hasErrors()){
+                    personal.save(flush: true)
+
+                    redirect(action: "areaPersonal", params:[id: personal.id])
+                }
+            }
+        }
+    }
+
+    def adicionarAlunoLista(){
+        def resposta = [:]
+
+        Personal personal = Personal.findById(session.userId)
 
         if (personal != null){
             Aluno aluno = Aluno.findById(params.id)
@@ -91,14 +51,18 @@ class PersonalController {
             if (aluno != null){
                 //aluno.addToPersonais(personal)
 
-                personal.addToAlunos(aluno)
+                if (!personal.alunos.contains(aluno)){
+                    personal.addToAlunos(aluno)
 
-                personal.validate()
+                    personal.validate()
 
-                if (!personal.hasErrors()){
-                    personal.save(flush: true)
+                    if (!personal.hasErrors()){
+                        personal.save(flush: true)
 
-                    render(view: "areaPersonal", params:[id: personal.id])
+                        redirect(action:"areaPersonal", params:[id: personal.id])// render( view: "areaPersonal", params:[id: personal.id])
+                    }
+                }else{
+                    redirect(controller: "aluno", action: "listar", params:{id:"O aluno já se encontra na lista"})
                 }
             }
         }
@@ -140,15 +104,6 @@ class PersonalController {
         session["userId"] = personalInstance.id
 
         redirect(controller: "personal",action: "areaPersonal", params: [id: personalInstance.id])
-
-/*        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'personal.label', default: 'Personal'), personalInstance.id])
-                redirect personalInstance
-            }
-            '*' { respond personalInstance, [status: CREATED] }
-        }
-*/
     }
 
     def edit(Personal personalInstance) {

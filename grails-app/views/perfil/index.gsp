@@ -131,9 +131,6 @@
     <br />
     <h5><a href="./personal/create.gsp">Cadastrar-se</a></h5>  <br />
     <h6><a href="">Esqueci senha!</a></h6>
-
-    <br /><br /><br />
-    <h5><a href="./personal/teste">cadastrarAluno</a></h5>  <br />
 </div>
 </body>
 </html>

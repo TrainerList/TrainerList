@@ -5,7 +5,7 @@ package Sistema
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class TreinoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -60,16 +60,18 @@ class TreinoController {
         Treino treino = Treino.findById(params.id)
 
         if (treino != null){
+
             treino.status = false
 
             treino.validate()
 
-            // Verificar erro "Connection is read-only. Queries leading to data modification are not allowed"
-            //treino.save(flush: true)
+            if (!treino.hasErrors()){
+                treino.save(flush: true)
 
-            aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
+                aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
 
-            redirect(action: "listarTreino")// render( : "listar",model: [treinos: aluno.treinos])
+                redirect(action: "listarTreino")// render( : "listar",model: [treinos: aluno.treinos])
+            }
         }
     }
 
@@ -88,21 +90,10 @@ class TreinoController {
         newTreino = new Treino()
 
         render(view: "create", model: [treinoInstance:newTreino])
-        //respond new Treino(params)
     }
 
     @Transactional
     def save(Treino treinoInstance) {
-        /*if (treinoInstance == null) {
-            notFound()
-            return
-        }
-
-        if (treinoInstance.hasErrors()) {
-            respond treinoInstance.errors, view:'create', model: [treinoInstance:treinoInstance]
-            return
-        }*/
-
         newTreino.aluno = aluno
         newTreino.descricao   = treinoInstance.descricao
         newTreino.dataInicio  = treinoInstance.dataInicio
@@ -112,18 +103,12 @@ class TreinoController {
 
         newTreino.validate()
 
-        newTreino.save(flash: true)
-        //treinoInstance.save flush:true
+        if (!newTreino.hasErrors()){
 
-        render(view: "listarTreino")
-        /*
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'treino.label', default: 'Treino'), treinoInstance.id])
-                redirect treinoInstance
-            }
-            '*' { respond treinoInstance, [status: CREATED] }
-        }*/
+            newTreino.save(flash: true)
+
+            render(view: "listarTreino")
+        }
     }
 
     def edit(Treino treinoInstance) {
