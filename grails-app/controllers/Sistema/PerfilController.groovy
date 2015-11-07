@@ -1,7 +1,5 @@
 package Sistema
 
-import grails.converters.JSON
-
 class PerfilController {
 
     def logar(){
@@ -22,9 +20,9 @@ class PerfilController {
                         redirect(controller: "aluno", action: "areaAluno", params: [id: perfil.id])
                     }
                 }else if (perfil.status == false){
-                    render(view: "index", model: [mensagem: "Usuario inativo!", email:params.email])
+                    render(view: "logar", model:[mensage: "Usuario inativo!" , email:params.email])
                 } else {
-                    render(view: "index", model: [mensagem: "e-mail/senha invalido!", email:params.email])
+                    render(view: "logar", model:[mensage: "e-mail/senha invalido!", email:params.email])
                 }
             }
         }else{

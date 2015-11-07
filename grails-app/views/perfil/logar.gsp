@@ -4,14 +4,6 @@
     <meta name="layout" content="main"/>
     <title>TrainerList</title>
 
-    <g:javascript plugin="jquery" library="jquery" />
-
-    <script type="text/javascript">
-        function loginInvalido(){
-            Alert("e-mail/senha invalido!")
-        }
-    </script>
-
     <style type="text/css" media="screen">
     #status {
         background-color: #eee;
@@ -113,8 +105,8 @@
 
         <div id="controller-list" role="navigation">
             <div>
-                <g:if test="${mensagem} != ''" >
-                    <label class="obrigatorio"> ${mensagem} </label>
+                <g:if test="${mensage} != ''" >
+                    <label class="obrigatorio"> ${mensage} </label>
                     <br /> <br />
                 </g:if>
 

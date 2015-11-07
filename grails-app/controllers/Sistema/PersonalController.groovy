@@ -15,7 +15,7 @@ class PersonalController {
     def areaPersonal(){
         def alunos = []
 
-        alunos = Personal.findById(params.id).alunos
+        alunos = Personal.findById(session.userId).alunos
 
         render(view:"areaPersonal", model: [alunos: alunos, alunosCount: alunos.size()])
     }
@@ -106,8 +106,12 @@ class PersonalController {
         redirect(controller: "personal",action: "areaPersonal", params: [id: personalInstance.id])
     }
 
-    def edit(Personal personalInstance) {
-        respond personalInstance
+    def edit() {
+        Personal personalInstance = Personal.findById(session.userId)
+
+        if (personalInstance != null){
+            respond personalInstance
+        }
     }
 
     @Transactional
@@ -124,13 +128,8 @@ class PersonalController {
 
         personalInstance.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Personal.label', default: 'Personal'), personalInstance.id])
-                redirect personalInstance
-            }
-            '*'{ respond personalInstance, [status: OK] }
-        }
+        redirect(action: "areaPersonal")
+
     }
 
     @Transactional

@@ -47,6 +47,11 @@
             <br />
             Não há alunos Cadastrados.
         </g:else>
+
+        <fieldset class="buttons">
+            <g:link class="edit" action="edit" >Perfil</g:link>
+        </fieldset>
+
     </div>
 </body>
 </html>
