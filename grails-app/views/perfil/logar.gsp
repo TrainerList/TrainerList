@@ -4,6 +4,31 @@
     <meta name="layout" content="main"/>
     <title>TrainerList</title>
 
+    <g:javascript library="jquery" plugin="jquery" />
+    <script type="text/javascript">
+
+        function excluir(id){
+            $.ajax({
+                type: "POST",
+                url: "/TrainerList/perfil/logar",
+                data: {id: id},
+                success: function (data) {
+                    alert("Excluiu")
+                },
+                dataType: "json"
+            });
+        }
+
+        function Sucesso(data){
+            if(data.ok == true){
+                location.href = data.url;
+            }else{
+                alert(data.msg);
+            }
+        }
+
+    </script>
+
     <style type="text/css" media="screen">
     #status {
         background-color: #eee;
@@ -91,17 +116,7 @@
 
 <div id="page-body" role="main">
 
-
-    <div id="controller-list" role="navigation">
-        <h2>Available Controllers:</h2>
-        <ul>
-            <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-            </g:each>
-        </ul>
-    </div>
-
-    <g:form name="formLogin" url="[controller:'perfil', action:'logar']" >
+    <g:formRemote name="formLogin" url="[controller:'perfil', action:'logar']" onSuccess="Sucesso(data)" >
 
         <div id="controller-list" role="navigation">
             <div>
@@ -119,9 +134,9 @@
         </div>
         <br />
         <input type="submit" name="logar"  value="Entrar"/>  <br />
-    </g:form>
+    </g:formRemote>
     <br />
-    <h5><a href="./personal/create.gsp">Cadastrar-se</a></h5>  <br />
+    <h5><a href="./personal/create">Cadastrar-se</a></h5>  <br />
     <h6><a href="">Esqueci senha!</a></h6>
 </div>
 </body>

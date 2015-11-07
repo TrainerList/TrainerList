@@ -129,7 +129,6 @@ class PersonalController {
         personalInstance.save flush:true
 
         redirect(action: "areaPersonal")
-
     }
 
     @Transactional

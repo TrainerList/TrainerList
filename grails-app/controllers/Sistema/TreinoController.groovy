@@ -107,7 +107,7 @@ class TreinoController {
 
             newTreino.save(flash: true)
 
-            render(view: "listarTreino")
+            redirect(action: "listarTreino")
         }
     }
 

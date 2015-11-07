@@ -1,10 +1,11 @@
 package Sistema
 
+import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional
 class ExercicioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -99,5 +100,17 @@ class ExercicioController {
             }
             '*' { render status: NOT_FOUND }
         }
+    }
+
+    def get(){
+        if (params.id){
+            Exercicio exercicio = Exercicio.get(params.id)
+            render exercicio as JSON
+        }else{
+            def resposta = [:]
+            resposta.mensagem = "ERRO"
+            render resposta as JSON
+        }
+
     }
 }

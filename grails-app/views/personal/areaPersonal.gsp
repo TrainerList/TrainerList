@@ -50,6 +50,7 @@
 
         <fieldset class="buttons">
             <g:link class="edit" action="edit" >Perfil</g:link>
+            <g:link controller="perfil" action="logoff" >Logoff</g:link>
         </fieldset>
 
     </div>

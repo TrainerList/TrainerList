@@ -14,9 +14,15 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
-		<g:layoutHead/>
+		<!-- Compiled and minified CSS -->
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+-->
+	<!-- Compiled and minified JavaScript -->
+<!--	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+-->		<g:layoutHead/>
 	</head>
 	<body>
+
 		<div id="grailsLogo" role="banner"><g:link controller="perfil" action="logar"> <asset:image src="trainerlist_logo.png" alt="TrainerList"/></g:link></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>

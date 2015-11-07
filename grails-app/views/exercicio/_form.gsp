@@ -7,7 +7,7 @@
 		<g:message code="exercicio.classesExercicio.label" default="Classes Exercicio" />
 		
 	</label>
-	<g:select name="classesExercicio" from="${Sistema.ClasseExercicio.list()}" multiple="multiple" optionKey="id" size="5" value="${exercicioInstance?.classesExercicio*.id}" class="many-to-many"/>
+	<g:select name="classesExercicio" from="${Sistema.ClasseExercicio.list()}" multiple="multiple" optionValue="classe" optionKey="id" size="5" value="${exercicioInstance?.classesExercicio*.id}" class="many-to-many"/>
 
 </div>
 

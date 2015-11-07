@@ -108,14 +108,14 @@
 
 			<g:form name="formLogin" url="[controller:'perfil', action:'logar']" >
 
-				<div id="controller-list" role="navigation">
-					<div>
+				<div id="controller-list" role="navigation" class="row">
+					<div class="input-field col s12">
 
 						<label> ${mensagem} </label>
 
 
-						<label> e-mail </label>
-						<g:textField name="email" value="${emial}"/>  <br /> <br />
+						<label for="email">Email</label>
+						<input id="email" name="email" value="${emial}" type="email" class="validate">
 
 						<label> Senha </label>
 						<g:passwordField name="senha" value=""/> <br />
@@ -128,6 +128,13 @@
 				<br /> <br />
 
 				<input type="submit" name="logar"  value="Entrar"/>
+
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="email" type="email" class="validate">
+						<label for="email">Email</label>
+					</div>
+				</div>
 
 			</g:form>
 

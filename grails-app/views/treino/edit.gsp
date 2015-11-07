@@ -6,7 +6,7 @@
 		<g:set var="entityName" value="${message(code: 'treino.label', default: 'Treino')}" />
 		<title><g:message code="default.edit.label" args="[entityName]" /></title>
 
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<g:javascript library="jquery" plugin="jquery" />
 
 		<script>
 			function verificaSerie() {

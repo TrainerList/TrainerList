@@ -5,26 +5,38 @@
 		<g:set var="entityName" value="${message(code: 'serieExercicio.label', default: 'SerieExercicio')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 
-		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+		<g:javascript library="jquery" plugin="jquery" />
 
 		<script>
-			function changeExercicio(cardio) {
+			function changeExercicio() {
+				$.post("/TrainerList/exercicio/get",{
+					id: $("#exercicio").val()
+				},function(data,status){
+					if (data.mensagem == "ERRO"){
+						alert("deu pau")
+					}else{
+						var exercicio = data
+						console.log(exercicio.cardio)
+						if (exercicio.cardio == true){
+							console.log("entrou")
+							$('#divMinutos').show()
 
-				if (cardio){
-					$('#divMinutos :input').attr('enabled', true)
+							$('#divAteFalha').hide()
+							$('#divSerie').hide()
+							$('#divRepeticao').hide()
+							$('#divIntervalo').hide()
+						} else {
+							console.log("aqui")
+							$('#divMinutos').hide()
 
-					$('#divAteFalha :input').attr('enabled', false)
-					$('#divSerie :input').attr('enabled', false)
-					$('#divRepeticao :input').attr('enabled', false)
-					$('#divIntervalo :input').attr('enabled', false)
-				} else {
-					$('#divMinutos :input').attr('enabled', false)
+							$('#divAteFalha').show()
+							$('#divSerie').show()
+							$('#divRepeticao').show()
+							$('#divIntervalo').show()
+						}
+					}
+				})
 
-					$('#divAteFalha :input').attr('enabled', true)
-					$('#divSerie :input').attr('enabled', true)
-					$('#divRepeticao :input').attr('enabled', true)
-					$('#divIntervalo :input').attr('enabled', true)
-				}
 			}
 
 			function ateFalhaChange(ateFalha) {
