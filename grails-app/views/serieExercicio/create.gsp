@@ -8,8 +8,28 @@
 		<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
 		<script>
-			function chabgeExercicio(cardio) {
-				if (cardio == 0){
+			function changeExercicio(cardio) {
+
+				if (cardio){
+					$('#divMinutos :input').attr('enabled', true)
+
+					$('#divAteFalha :input').attr('enabled', false)
+					$('#divSerie :input').attr('enabled', false)
+					$('#divRepeticao :input').attr('enabled', false)
+					$('#divIntervalo :input').attr('enabled', false)
+				} else {
+					$('#divMinutos :input').attr('enabled', false)
+
+					$('#divAteFalha :input').attr('enabled', true)
+					$('#divSerie :input').attr('enabled', true)
+					$('#divRepeticao :input').attr('enabled', true)
+					$('#divIntervalo :input').attr('enabled', true)
+				}
+			}
+
+			function ateFalhaChange(ateFalha) {
+
+				if (ateFalha.value){
 					$('#divMinutos :input').attr('enabled', true)
 
 					$('#divAteFalha :input').attr('enabled', false)
@@ -25,8 +45,9 @@
 					$('#divIntervalo :input').attr('enabled', true)
 				}
 
-				alert(cardio == 2)
+
 			}
+
 		</script>
 
 	</head>

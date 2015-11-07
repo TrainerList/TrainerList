@@ -29,6 +29,10 @@
 
 </div>
 
+<g:if test="${mensagem} != ''">
+	${mensagem}
+</g:if>
+
 <div class="content scaffold-list" role="main" ${hasErrors(bean: treinoInstance, field: 'status', 'error')} ">
 	<br />
 	<div class="nav" role="navigation">
@@ -43,25 +47,30 @@
 			<g:each in="${treinoInstance.seriesExercicios}" status="i" var="seriesExercicio">
 				<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					<td>
-						${seriesExercicio.exercicio.nome}
-						<br />
-						<g:if test="${seriesExercicio.exercicio.cardio}">
-							<g:if test="${seriesExercicio.ateFalha}">
-								ate a falha + ${seriesExercicio.ateFalha}
+						<fieldset class="buttons">
+							<li>
+								${seriesExercicio.exercicio.nome}
+
+								<br />
+								<g:if test="${seriesExercicio.exercicio.cardio}">
+									${seriesExercicio.minutos} Minutos
+								</g:if>
+								<g:else>
+									<g:if test="${seriesExercicio.ateFalha}">
+										até a Falha
+									</g:if>
+									<g:else>
+										${seriesExercicio.repeticao} X ${seriesExercicio.quantidadeRepeticao}
+									</g:else>
+								</g:else>
+							</li>
+
+							<li><g:link class="edit" controller="serieExercicio" action="edit" resource="${seriesExercicio}"><img height="16px" width="0px"></g:link></li>
+
+							<g:if test="${seriesExercicio.id} != null">
+								<li><g:link class="delete" action="inativar" resource="${seriesExercicio}" onclick="return confirm('Confirmar Inativação?');"> <img height="16px"></g:link></li>
 							</g:if>
-							<g:else>
-								${seriesExercicio.repeticao} X ${seriesExercicio.quantidadeRepeticao}
-							</g:else>
-						</g:if>
-						<g:else>
-							${seriesExercicio.minutos} Minutos
-						</g:else>
-
-						<g:link action="edit" resource="${treino.seriesExercicios}" >Ed.</g:link>
-
-						<g:if test="${treino.seriesExercicios.id} != null">
-							<g:link action="inativar" id="${treino.seriesExercicios.id}" onclick="return confirm('Confirmar Inativação?');" >Rem.</g:link>
-						</g:if>
+						</fieldset>
 					</td>
 				</tr>
 			</g:each>

@@ -14,12 +14,12 @@ class TreinoController {
     static Boolean editar = false
 
     def listarTreino() {
-        if (aluno == null) {
+        if ((aluno == null || aluno.id != params.id) && (params.id != null)) {
             aluno = Aluno.findById(params.id)
+        }
 
-            if (aluno != null) {
-                aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
-            }
+        if (aluno != null) {
+            aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
         }
 
         render(view: "listar",model: [treinos: aluno.treinos])
@@ -114,34 +114,43 @@ class TreinoController {
     def edit(Treino treinoInstance) {
         editar = true
 
-        if (newTreino == null){
+        if (newTreino == null) {
             newTreino = treinoInstance
+        } else if (treinoInstance != null) {
+            if (newTreino.id != treinoInstance.id){
+                newTreino = treinoInstance
+            }
         }
+
+        newTreino.seriesExercicios = Treino.findById(newTreino.id).seriesExercicios
 
         respond newTreino
     }
 
     @Transactional
     def update(Treino treinoInstance) {
-        if (treinoInstance == null) {
+        /*newTreino.validate()
+
+        if (!newTreino.hasErrors()){
+            newTreino.save(flush: true)
+
+
+        }*/
+
+        if (newTreino == null) {
             notFound()
             return
         }
 
-        if (treinoInstance.hasErrors()) {
-            respond treinoInstance.errors, view:'edit'
+        if (newTreino.hasErrors()) {
+            respond newTreino.errors, view:'edit'
             return
         }
 
-        treinoInstance.save flush:true
+        newTreino.save flush:true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Treino.label', default: 'Treino'), treinoInstance.id])
-                redirect treinoInstance
-            }
-            '*'{ respond treinoInstance, [status: OK] }
-        }
+        redirect(action: "listarTreino")
+
     }
 
     @Transactional

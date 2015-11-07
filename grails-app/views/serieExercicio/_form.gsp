@@ -6,8 +6,14 @@
 		<g:message code="serieExercicio.exercicio.label" default="Exercicio" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="exercicio" name="exercicio.id" from="${Sistema.Exercicio.list()}" optionKey="id" required="" value="${serieExercicioInstance?.exercicio?.id}" class="many-to-one"
-			  onchange="chabgeExercicio(value)" />
+
+	<g:if test="${Sistema.Exercicio.list().size() > 0}">
+		<g:select id="exercicio" name="exercicio.id" from="${Sistema.Exercicio.list()}" optionValue="nome" valueMessagePrefix="cardio" optionKey="id" required=""  value="${serieExercicioInstance?.exercicio?.id}"
+			  class="many-to-one" onchange="changeExercicio(${serieExercicioInstance?.exercicio?.id})" />
+	</g:if>
+	<g:else>
+		Nenhum exercicio encontrado!
+	</g:else>
 </div>
 
 
@@ -16,8 +22,7 @@
 		<g:message code="serieExercicio.ateFalha.label" default="Ate Falha" />
 		
 	</label>
-	<g:checkBox name="ateFalha" value="${serieExercicioInstance?.ateFalha}" />
-
+	<g:checkBox id="ateFalha" name="ateFalha" value="${serieExercicioInstance?.ateFalha}" onclick="ateFalhaChange()" />
 </div>
 
 

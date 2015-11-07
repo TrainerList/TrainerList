@@ -9,6 +9,20 @@ class SerieExercicioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+    def inativar(SerieExercicio serieExercicioInstance){
+
+        serieExercicioInstance.status = false
+
+
+        serieExercicioInstance.validate()
+
+        if (!serieExercicioInstance.hasErrors()){
+            serieExercicioInstance.save(flush: true)
+
+            redirect(action: "edit")
+        }
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond SerieExercicio.list(params), model: [serieExercicioInstanceCount: SerieExercicio.count()]
@@ -32,21 +46,6 @@ class SerieExercicioController {
         redirect(controller: "treino", action: "adicionarSerieExercicio", params: [tempoIntervalo:serieExercicioInstance.tempoIntervalo, repeticao:serieExercicioInstance.repeticao,
                                                                                    quantidadeRepeticao: serieExercicioInstance.quantidadeRepeticao, ateFalha:serieExercicioInstance.ateFalha,
                                                                                    exercicioId :serieExercicioInstance.exercicio.id, minutos:serieExercicioInstance.minutos])
-/*
-        if (serieExercicioInstance.hasErrors()) {
-            respond serieExercicioInstance.errors, view: 'create'
-            return
-        }
-
-        serieExercicioInstance.save flush: true
-
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'serieExercicio.label', default: 'SerieExercicio'), serieExercicioInstance.id])
-                redirect serieExercicioInstance
-            }
-            '*' { respond serieExercicioInstance, [status: CREATED] }
-        }*/
     }
 
     def edit(SerieExercicio serieExercicioInstance) {
@@ -67,13 +66,7 @@ class SerieExercicioController {
 
         serieExercicioInstance.save flush: true
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'SerieExercicio.label', default: 'SerieExercicio'), serieExercicioInstance.id])
-                redirect serieExercicioInstance
-            }
-            '*' { respond serieExercicioInstance, [status: OK] }
-        }
+        redirect(controller: "treino", action: "edit")
     }
 
     @Transactional
