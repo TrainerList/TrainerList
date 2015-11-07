@@ -118,22 +118,25 @@
 
     <g:formRemote name="formLogin" url="[controller:'perfil', action:'logar']" onSuccess="Sucesso(data)" >
 
+
+
         <div id="controller-list" role="navigation">
-            <div>
-                <g:if test="${mensage} != ''" >
-                    <label class="obrigatorio"> ${mensage} </label>
-                    <br /> <br />
-                </g:if>
-
-                <label> e-mail </label>
-                <g:textField name="email" value="${emial}" />  <br /> <br />
-
-                <label> Senha </label>
-                <g:passwordField name="senha" value=""/> <br />
+            <div class="row">
+                <div class="input-field col s8">
+                    <g:textField name="email1" value="${emial}" />  <br /> <br />
+                    <label for="email">e-mail</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <g:passwordField name="senha1" value=""/> <br />
+                    <label for="password">Senha</label>
+                </div>
             </div>
         </div>
         <br />
-        <input type="submit" name="logar"  value="Entrar"/>  <br />
+        <a type="submit" class="waves-effect waves-light btn">Entrar </a>
+        <input type="submit" name="logar" value="Entrar"/>  <br />
     </g:formRemote>
     <br />
     <h5><a href="./personal/create">Cadastrar-se</a></h5>  <br />
