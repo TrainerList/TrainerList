@@ -14,6 +14,7 @@ class PerfilController {
 
             if (perfil != null){
                 if (perfil.status == true){
+
                     def userId = session["userId"]
 
                     session["userId"] = perfil.id

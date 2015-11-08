@@ -135,9 +135,13 @@
             </div>
         </div>
         <br />
-        <a type="submit" class="waves-effect waves-light btn">Entrar </a>
-        <input type="submit" name="logar" value="Entrar"/>  <br />
+
+        <button class="btn waves-effect waves-light" type="submit" name="logar" value="Entrar">Entrar
+            <i class="material-icons right">send</i>
+        </button>
+
     </g:formRemote>
+
     <br />
     <h5><a href="./personal/create">Cadastrar-se</a></h5>  <br />
     <h6><a href="">Esqueci senha!</a></h6>

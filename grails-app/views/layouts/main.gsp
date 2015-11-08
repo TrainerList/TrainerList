@@ -14,16 +14,18 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="${assetPath(src: 'apple-touch-icon-retina.png')}">
   		<asset:stylesheet src="application.css"/>
 		<asset:javascript src="application.js"/>
-		<g:layoutHead/>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<g:layoutHead/>
 	</head>
 	<body>
-		<div class="container">
-			<div id="grailsLogo" role="banner"><g:link controller="perfil" action="logar"> <asset:image src="trainerlist_logo.png" alt="TrainerList"/></g:link></div>
-			<g:layoutBody/>
-			<div class="footer" role="contentinfo"></div>
-			<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		</div>
+
+		<div id="grailsLogo" role="banner"><g:link controller="perfil" action="logar"> <asset:image src="trainerlist_logo.png" alt="TrainerList"/></g:link></div>
+		<g:layoutBody/>
+		<div class="footer" role="contentinfo"></div>
+		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
 	</body>
 </html>
