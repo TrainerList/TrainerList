@@ -11,6 +11,10 @@
                 alert("Senhra requer entre 8 e 20 caracteres");
                 form.senha.focus();
                 return false;
+            } else if (form.senha.value != form.senhaConfirmar.value) {
+                alert("Senhas divergentes");
+                form.senha.focus();
+                return false;
             }
         }
     </script>
@@ -38,8 +42,7 @@
             <g:render template="form"/>
         </fieldset>
         <fieldset class="buttons">
-            <g:submitButton name="create" class="save"
-                            value="${message(code: 'default.button.create.label', default: 'Create')}"/>
+            <g:submitButton name="create" class="save" value="Salvar"/>
         </fieldset>
     </g:form>
 </div>

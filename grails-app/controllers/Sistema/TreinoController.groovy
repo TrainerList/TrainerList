@@ -1,6 +1,6 @@
 package Sistema
 
-
+import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -94,21 +94,37 @@ class TreinoController {
 
     @Transactional
     def save(Treino treinoInstance) {
-        newTreino.aluno = aluno
-        newTreino.descricao   = treinoInstance.descricao
-        newTreino.dataInicio  = treinoInstance.dataInicio
-        newTreino.dataTermino = treinoInstance.dataTermino
+        def resposta = [:]
 
-        aluno.addToTreinos(newTreino)
+        if (newTreino.seriesExercicios != null) {
+            if (newTreino.seriesExercicios.size() > 0) {
+                newTreino.aluno = aluno
+                newTreino.descricao = treinoInstance.descricao
+                newTreino.dataInicio = treinoInstance.dataInicio
+                newTreino.dataTermino = treinoInstance.dataTermino
 
-        newTreino.validate()
+                aluno.addToTreinos(newTreino)
 
-        if (!newTreino.hasErrors()){
+                newTreino.validate()
 
-            newTreino.save(flash: true)
+                if (!newTreino.hasErrors()) {
 
-            redirect(action: "listarTreino")
+                    newTreino.save(flash: true)
+
+                    resposta["ok"] = true
+                    resposta["url"] = "/TrainerList/treino/listarTreino"
+                    //redirect(action: "listarTreino")
+                }
+            } else {
+                resposta["ok"] = false
+                resposta["msg"] = "Nenhum exercício informado!"
+            }
+        } else {
+            resposta["ok"] = false
+            resposta["msg"] = "Nenhum exercício informado!"
         }
+
+        render resposta as JSON
     }
 
     def edit(Treino treinoInstance) {

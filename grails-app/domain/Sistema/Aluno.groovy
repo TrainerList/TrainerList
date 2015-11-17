@@ -12,16 +12,16 @@ class Aluno extends Perfil {
 
     static belongsTo = [Personal]
 
+    Aluno() {
+        dataCadastro = new Date();
+        status = true
+    }
+
     static constraints = {
         observacao nullable: true
     }
 
     static mapping = {
         discriminator value: "Aluno";
-    }
-
-    def beforeInsert (){
-        dataCadastro = new Date();
-        status = true
     }
 }

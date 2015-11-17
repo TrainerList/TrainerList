@@ -120,7 +120,8 @@ class AlunoController {
 
         alunoInstance = alunoInstance.save flush:true
 
-        redirect(controller: "aluno",action: "listarById", params: [id: alunoInstance.id])
+        //redirect(controller: "aluno",action: "listarById", params: [id: alunoInstance.id])
+        redirect(controller: "personal", action: "adicionarAlunoLista", params: [id:alunoInstance.id])
 
         /*
         request.withFormat {

@@ -6,19 +6,6 @@
 
     <g:javascript library="jquery" plugin="jquery" />
     <script type="text/javascript">
-
-        function excluir(id){
-            $.ajax({
-                type: "POST",
-                url: "/TrainerList/perfil/logar",
-                data: {id: id},
-                success: function (data) {
-                    alert("Excluiu")
-                },
-                dataType: "json"
-            });
-        }
-
         function Sucesso(data){
             if(data.ok == true){
                 location.href = data.url;
@@ -117,19 +104,16 @@
 <div id="page-body" role="main">
 
     <g:formRemote name="formLogin" url="[controller:'perfil', action:'logar']" onSuccess="Sucesso(data)" >
-
-
-
         <div id="controller-list" role="navigation">
             <div class="row">
                 <div class="input-field col s8">
-                    <g:textField name="email1" value="${emial}" />  <br /> <br />
+                    <g:textField name="email" value="${emial}" />  <br /> <br />
                     <label for="email">e-mail</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s8">
-                    <g:passwordField name="senha1" value=""/> <br />
+                    <g:passwordField name="senha" value=""/> <br />
                     <label for="password">Senha</label>
                 </div>
             </div>

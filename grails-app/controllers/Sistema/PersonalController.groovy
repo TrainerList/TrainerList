@@ -97,13 +97,39 @@ class PersonalController {
 
         personalInstance.senha = personalInstance.senha.encodeAsSHA256()
 
-        personalInstance = personalInstance.save flush:true
+        String swapLink = new Date().toString() + personalInstance.email + personalInstance.dataNascimento
 
-        def userId = session["userId"]
+        personalInstance.linkAtivacao = swapLink.encodeAsSHA256()
 
-        session["userId"] = personalInstance.id
+        personalInstance = personalInstance.save(flush: true)
 
-        redirect(controller: "personal",action: "areaPersonal", params: [id: personalInstance.id])
+        swapLink = "/TrainerList/personal/confirmarCadastro/"+swapLink.encodeAsSHA256()
+
+        //def userId = session["userId"]
+        //session["userId"] = personalInstance.id
+        //redirect(controller: "personal",action: "areaPersonal", params: [id: personalInstance.id])
+
+        render(view: "confirmarCadastro", model: [emailConfirmacao: personalInstance.email, linkAtivacao:swapLink])
+    }
+
+    def confirmarCadastro(){
+
+        if (params.id != null) {
+            Personal personal = Personal.findByLinkAtivacao(params.id)
+
+            if (personal != null) {
+                personal.status = true
+                personal.linkAtivacao = ""
+
+                personal.save(flush: true)
+
+                render(view: "cadastroConfirmado")
+
+                //def userId = session["userId"]
+                //session["userId"] = personal.id
+                //redirect(controller: "personal", action: "areaPersonal", params: [id: personal.id])
+            }
+        }
     }
 
     def edit() {

@@ -31,7 +31,7 @@
 </div>
 
 
-<div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'senha', 'error')} required">
+<div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'senha', 'error')} ">
     <label for="senha">
         <g:message code="aluno.senha.label" default="Senha"/>
         <span class="required-indicator">*</span>
@@ -83,44 +83,8 @@
 <div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'observacao', 'error')}">
     <label for="observacao">
         <g:message code="aluno.observacao.label" default="Observacao"/>
-        <span class="required-indicator">*</span>
+
     </label>
     <g:textArea name="observacao" value="${alunoInstance?.observacao}"> </g:textArea>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'treinos', 'error')} ">
-    <label for="treinos">
-        <g:message code="aluno.treinos.label" default="Treinos"/>
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${alunoInstance?.treinos ?}" var="t">
-            <li><g:link controller="treino" action="show" id="${t.id}">${t?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="treino" action="create"
-                    params="['aluno.id': alunoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'treino.label', default: 'Treino')])}</g:link>
-        </li>
-    </ul>
-
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'avalicoesFisicas', 'error')} ">
-    <label for="avalicoesFisicas">
-        <g:message code="aluno.avalicoesFisicas.label" default="Avalicoes Fisicas"/>
-
-    </label>
-
-    <ul class="one-to-many">
-        <g:each in="${alunoInstance?.avalicoesFisicas ?}" var="a">
-            <li><g:link controller="avaliacaoFisica" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></li>
-        </g:each>
-        <li class="add">
-            <g:link controller="avaliacaoFisica" action="create"
-                    params="['aluno.id': alunoInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'avaliacaoFisica.label', default: 'AvaliacaoFisica')])}</g:link>
-        </li>
-    </ul>
 
 </div>

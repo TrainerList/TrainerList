@@ -35,5 +35,13 @@
 
 </div>
 
+<div  class="fieldcontain ${hasErrors(bean: personalInstance, field: 'senha', 'error')} required">
+    <label for="senha">
+        <g:message code="personal.senha.label" default="Senha"/>
+        <span class="required-indicator">*</span>
+    </label>
+    <g:passwordField name="senhaConfirmar" required="" value="" maxlength="20" />
+</div>
+
 
 

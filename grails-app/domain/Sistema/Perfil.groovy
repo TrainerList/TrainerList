@@ -9,6 +9,7 @@ class Perfil {
     String email
     String senha
     Date dataCadastro
+    String linkAtivacao
 
     Boolean status
 
@@ -16,5 +17,6 @@ class Perfil {
         email email:true, unique: true
         dataCadastro nullable: true
         status nullable: true
+        linkAtivacao nullable: true
     }
 }

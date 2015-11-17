@@ -5,6 +5,18 @@
 		<g:set var="entityName" value="${message(code: 'treino.label', default: 'Treino')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 
+		<g:javascript library="jquery" plugin="jquery" />
+
+		<script>
+			function Sucesso(data){
+				if(data.ok == 'true'){
+					location.href = data.url;
+				}else{
+					alert(data.msg);
+				}
+			}
+		</script>
+
 	</head>
 	<body>
 		<a href="#create-treino" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -21,14 +33,14 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:treinoInstance, action:'save']" >
+			<g:formRemote name="formTreino" url="[resource:treinoInstance, action:'save']" onSuccess="Sucesso(data)" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
-			</g:form>
+			</g:formRemote>
 		</div>
 	</body>
 </html>

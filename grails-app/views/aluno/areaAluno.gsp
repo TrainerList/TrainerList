@@ -31,7 +31,7 @@
     </g:if>
     <g:else>
         <br />
-        Nenhum treino encontrado!
+        <h3>&nbsp&nbsp Nenhum treino encontrado!</h3>
     </g:else>
 </body>
 </html>

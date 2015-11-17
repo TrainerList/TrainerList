@@ -13,7 +13,7 @@
 
         <div class="nav" role="navigation">
             <ul>
-                <li> <g:link class="create" url="[controller:'aluno', action:'listar', params:'nome:null' ]" > Add Aluno </g:link> </li>
+                <li> <g:link class="create" url="[controller:'aluno', action:'listar', params:'nome:null' ]" > Adicionar Aluno </g:link> </li>
             </ul>
         </div>
 
@@ -30,10 +30,10 @@
                         <td>
                             ${fieldValue(bean: aluno, field: "nome")}
 
-                            <g:link controller="treino" action="listarTreino" id="${aluno.id}" >T.</g:link>
+                            <g:link controller="treino" action="listarTreino" id="${aluno.id}" >Treino</g:link>
                             <!-- controller="AvaliacaoFisica" -->
-                            <g:link  action="edit" id="${aluno.id}">A.F.</g:link>
-                            <g:link  action="inativarAluno" id="${aluno.id}" onclick="return confirm('Realmente quer remover o Aluno?');" >Rem.</g:link>
+                            <g:link  action="edit" id="${aluno.id}">Avaliação Física</g:link>
+                            <g:link  action="inativarAluno" id="${aluno.id}" onclick="return confirm('Realmente quer remover o Aluno?');" >Remover</g:link>
                         </td>
                     </tr>
                 </g:each>
@@ -45,7 +45,8 @@
         </g:if>
         <g:else>
             <br />
-            Não há alunos Cadastrados.
+            <h3>&nbsp&nbsp Não há alunos Cadastrados.</h3>
+
         </g:else>
 
         <fieldset class="buttons">

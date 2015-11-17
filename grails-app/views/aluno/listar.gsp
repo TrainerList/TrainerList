@@ -23,16 +23,21 @@
     <g:form url="[action: 'create']">
         <div class="nav" role="navigation">
             <ul>
-                <li><g:link class="create" action="create">Novo Aluno</g:link></li>
+                <li><g:link class="create" action="create">Cadastrar Aluno</g:link></li>
             </ul>
         </div>
     </g:form>
 
     <g:form url="[action: 'listar']" >
         <fieldset class="buttons">
-            Aluno <input type="text" name="nome" placeholder="Nome do Aluno" >
+            <div class="row">
+                <div class="input-field col s8">
+                    <g:textField name="nome"  />
+                    <label for="email">Nome do Aluno</label>
+                </div>
 
-        <g:submitButton name="pesquisar" class="save" value="Pesq"/>
+            </div>
+            <g:submitButton name="pesquisar" class="save" value="Pesquisar"/>
 
         <g:if test="${mensagem} != ''" >
            <br /> ${mensagem}
@@ -53,7 +58,7 @@
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 
                         <td>
-                            <g:link controller="aluno" action="adicionarAlunoLista" id="${aluno.id}">Add.</g:link>
+                            <g:link controller="aluno" action="adicionarAlunoLista" id="${aluno.id}">Adicionar</g:link>
                             ${fieldValue(bean:aluno, field: "nome")}
                         </td>
                     </tr>

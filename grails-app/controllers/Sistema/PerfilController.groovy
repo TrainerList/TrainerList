@@ -23,27 +23,19 @@ class PerfilController {
                         resposta["ok"] = true
                         resposta["url"] = "/TrainerList/personal/areaPersonal"
                         render resposta as JSON
-                        //redirect(controller: "personal",action: "areaPersonal", params: [id: perfil.id])
                     } else if(perfil.class == Aluno){
                         resposta["ok"] = true
                         resposta["url"] = "/TrainerList/aluno/areaAluno"
                         render resposta as JSON
-                        //redirect(controller: "aluno", action: "areaAluno", params: [id: perfil.id])
                     }
                 }else if (perfil.status == false){
-                    //resposta["status"]="Usuario inativo!";
-                    //render resposta as JSON;
                     resposta["ok"] = false
                     resposta["msg"] = "Usuário inativo"
                     render resposta as JSON
-                    //render(view: "logar", model:[mensage:"Usuario inativo!",email:params.email])
                 } else {
-                    //resposta["status"]="e-mail/senha invalido!";
-                    //render resposta as JSON;
                     resposta["ok"] = false
                     resposta["msg"] = "e-mail/senha invalido!"
                     render resposta as JSON
-                    //render(view: "logar", model:[mensage:"e-mail/senha invalido!",email:params.email])
                 }
             }else{
                 resposta["ok"] = false
@@ -57,12 +49,10 @@ class PerfilController {
                 resposta["ok"] = true
                 resposta["url"] = "/TrainerList/personal/areaPersonal"
                 render resposta as JSON
-                //redirect(controller: "personal",action: "areaPersonal", params: [id: perfil.id])
             } else if(perfil.class == Aluno){
                 resposta["ok"] = true
                 resposta["url"] = "/TrainerList/aluno/areaAluno"
                 render resposta as JSON
-                //redirect(controller: "aluno", action: "areaAluno", params: [id: perfil.id])
             }
         }
     }
