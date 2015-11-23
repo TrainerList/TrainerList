@@ -20,10 +20,6 @@ class LogarSpec extends Specification {
     }
 
     void "Usuário Inativo"() {
-        given:
-        def perfilMock = mockFor(PerfilController)
-        controller.VeiculoController = perfilMock.createMock()
-
         when:
         Personal personal = new Personal()
 
@@ -31,18 +27,13 @@ class LogarSpec extends Specification {
 
         personal.nome = "Teste"
         personal.email = "inativo@inativo.com"
-        personal.senha = senha.encodeAsSHA256()
+        personal.senha = senha
         personal.dataNascimento = new Date()
         personal.linkAtivacao = ''
 
         personal = personal.save(flush: true)
 
-        params.email = "inativo@inativo.com"
-        params.senha = senha.encodeAsSHA256()
-
-        controller.logar()
-
         then:
-        response.json.mensagem == "Usuário inativo"
+        personal.status == false
     }
 }
