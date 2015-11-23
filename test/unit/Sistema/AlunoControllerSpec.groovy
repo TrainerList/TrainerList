@@ -149,4 +149,22 @@ class AlunoControllerSpec extends Specification {
             response.redirectedUrl == '/aluno/index'
             flash.message != null
     }
+
+    void "Adicionar Aluno a Lista"() {
+        when:
+
+        Personal personal = Personal.findById(1)
+        Aluno aluno = Aluno.findById(5)
+        if (!personal.alunos.contains(aluno)) {
+            personal.addToAlunos(aluno)
+
+            personal.validate()
+
+            personal.save(flush: true)
+        }
+
+        then:
+        personal.hasErrors() == false
+
+    }
 }
