@@ -103,7 +103,7 @@ class PersonalController {
 
         personalInstance = personalInstance.save(flush: true)
 
-        swapLink = "/TrainerList/personal/confirmarCadastro/"+swapLink.encodeAsSHA256()
+        swapLink = "http://localhost:8080/TrainerList/personal/confirmarCadastro/"+swapLink.encodeAsSHA256()
 
         //def userId = session["userId"]
         //session["userId"] = personalInstance.id

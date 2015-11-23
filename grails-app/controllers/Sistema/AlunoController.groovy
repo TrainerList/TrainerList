@@ -8,6 +8,7 @@ class AlunoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     static String mensagem
+    static Aluno alunoSenha
 
     def listar(){
         def alunos = []
@@ -87,6 +88,19 @@ class AlunoController {
         Treino treinos = Treino.findAllByAluno(aluno)
         
         render(view: "areaAluno",Model:[treinos:treinos])
+    }
+
+    def alterarSenha(){
+        if (params.senha != ""){
+            alunoSenha.senha = params.senha.encodeAsSHA256()
+            alunoSenha.linkAtivacao = ""
+            alunoSenha.status = true
+
+            alunoSenha.validate()
+            alunoSenha.save(flush: true)
+
+            render(view:"cadastroConfirmado")
+        }
     }
 
     def index(Integer max) {

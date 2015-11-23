@@ -32,12 +32,12 @@
         <fieldset class="buttons">
             <div class="row">
                 <div class="input-field col s8">
-                    <g:textField name="nome"  />
-                    <label for="email">Nome do Aluno</label>
+                    <g:textField name="nome" placeholder="Nome do Aluno" />
+                    <g:submitButton name="pesquisar" class="save" value="Pesquisar"/>
                 </div>
 
             </div>
-            <g:submitButton name="pesquisar" class="save" value="Pesquisar"/>
+
 
         <g:if test="${mensagem} != ''" >
            <br /> ${mensagem}

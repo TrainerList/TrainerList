@@ -15,6 +15,29 @@ class PerfilSpec extends Specification {
     def cleanup() {
     }
 
-    void "test something"() {
+    void "Usuário Inativo"() {
+        given:
+        def perfilMock = mockFor(PerfilController)
+        controller.VeiculoController = perfilMock.createMock()
+
+        when:
+        Perfil perfil = new Perfil()
+
+        String senha = "123123123"
+
+        perfil.nome = "Teste"
+        perfil.email = "inativo@inativo.com"
+        perfil.senha = senha
+        perfil.dataNascimento = new Date()
+        perfil.linkAtivacao = ''
+
+        perfil.save(flush: true)
+
+        params
+
+        controller.logar()
+
+        then:
+        response.json.mensagem == "Usuário inativo"
     }
 }

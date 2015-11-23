@@ -14,7 +14,8 @@
 
 <body>
     <div class="container">
-        Cadastro confimado com sucesso. <a href="/TrainerList/" >Logar-se</a>
+        &nbspCadastro confimado com sucesso. <br/><br/>
+        &nbspFaça o <a href="/TrainerList/" >login</a>.
         <br />
     </div>
 </body>

@@ -121,7 +121,7 @@
         <br />
 
         <button class="btn waves-effect waves-light" type="submit" name="logar" value="Entrar">Entrar
-            <i class="material-icons right">send</i>
+            <!--<i class="material-icons right">send</i>-->
         </button>
 
     </g:formRemote>
