@@ -27,13 +27,14 @@ class PerfilSpec extends Specification {
 
         perfil.nome = "Teste"
         perfil.email = "inativo@inativo.com"
-        perfil.senha = senha
+        perfil.senha = senha.encodeAsSHA256()
         perfil.dataNascimento = new Date()
         perfil.linkAtivacao = ''
 
         perfil.save(flush: true)
 
-        params
+        params.email = "inativo@inativo.com"
+        params.senha = senha
 
         controller.logar()
 
