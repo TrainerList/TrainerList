@@ -18,5 +18,6 @@ class Perfil {
         dataCadastro nullable: true
         status nullable: true
         linkAtivacao nullable: true
+        senha nullable: true
     }
 }

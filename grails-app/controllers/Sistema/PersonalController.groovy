@@ -59,10 +59,10 @@ class PersonalController {
                     if (!personal.hasErrors()){
                         personal.save(flush: true)
 
-                        redirect(action:"areaPersonal", params:[id: personal.id])// render( view: "areaPersonal", params:[id: personal.id])
+                        redirect(action:"areaPersonal", params:[id: personal.id])
                     }
                 }else{
-                    redirect(controller: "aluno", action: "listar", params:{id:"O aluno já se encontra na lista"})
+                    redirect(controller: "aluno", action: "listar", params:{id:"O aluno jï¿½ se encontra na lista"})
                 }
             }
         }

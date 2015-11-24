@@ -31,16 +31,6 @@
 </div>
 
 
-<div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'senha', 'error')} ">
-    <label for="senha">
-        <g:message code="aluno.senha.label" default="Senha"/>
-        <span class="required-indicator">*</span>
-    </label>
-    <g:passwordField name="senha" required="" value="${alunoInstance?.senha}"/>
-
-</div>
-
-
 <div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'diabetico', 'error')} ">
     <label for="diabetico">
         Diabético

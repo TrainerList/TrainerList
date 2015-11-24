@@ -107,14 +107,14 @@
         <div id="controller-list" role="navigation">
             <div class="row">
                 <div class="input-field col s8">
-                    <g:textField name="email" value="${emial}" />  <br /> <br />
                     <label for="email">e-mail</label>
+                    <g:textField name="email" value="${emial}" />  <br /> <br />
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s8">
-                    <g:passwordField name="senha" value=""/> <br />
                     <label for="password">Senha</label>
+                    <g:passwordField name="senha" value=""/> <br />
                 </div>
             </div>
         </div>

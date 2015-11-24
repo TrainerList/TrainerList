@@ -50,7 +50,7 @@ class AlunoController {
                         redirect(controller: "personal", action:"areaPersonal", params:[id: personal.id])
                     }
                 }else{
-                    mensagem = "O aluno já se encontra na lista"
+                    mensagem = "O aluno ja se encontra na lista"
 
                     redirect(action: "listar")
                 }
@@ -103,6 +103,34 @@ class AlunoController {
         }
     }
 
+    def finalizarCadastro(){
+        if (params.id != null) {
+            alunoSenha = Aluno.findByLinkAtivacao(params.id)
+
+            render(view: "alterarSenha", model: [alunoid:alunoSenha.id])
+        }
+    }
+
+    def confirmarCadastro(){
+        if (params.senha != null) {
+            Aluno aluno = Aluno.findById(alunoSenha.id)
+
+            if (aluno != null) {
+                aluno.status = true
+                aluno.linkAtivacao = ""
+                aluno.senha = params.senha.encodeAsSHA256()
+
+                aluno = aluno.save(flush: true)
+
+                render(view: "/aluno/cadastroConfirmado", model: [alunoid:aluno.id])
+
+                //def userId = session["userId"]
+                //session["userId"] = personal.id
+                //redirect(controller: "personal", action: "areaPersonal", params: [id: personal.id])
+            }
+        }
+    }
+
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Aluno.list(params), model:[alunoInstanceCount: Aluno.count()]
@@ -123,19 +151,32 @@ class AlunoController {
             return
         }
 
+        alunoInstance.senha = ""
+
         if (alunoInstance.hasErrors()) {
             respond alunoInstance.errors, view:'create'
             return
         }
 
-        alunoInstance.senha = alunoInstance.senha.encodeAsSHA256()
+        String swapLink = new Date().toString() + alunoInstance.email + alunoInstance.dataNascimento
+
+        alunoInstance.linkAtivacao = swapLink.encodeAsSHA256()
 
         alunoInstance.validate()
 
         alunoInstance = alunoInstance.save flush:true
 
         //redirect(controller: "aluno",action: "listarById", params: [id: alunoInstance.id])
-        redirect(controller: "personal", action: "adicionarAlunoLista", params: [id:alunoInstance.id])
+        //redirect(controller: "personal", action: "adicionarAlunoLista", params: [id:alunoInstance.id])
+
+
+        swapLink = "http://localhost:8080/TrainerList/aluno/finalizarCadastro/"+swapLink.encodeAsSHA256()
+
+        //def userId = session["userId"]
+        //session["userId"] = personalInstance.id
+        //redirect(controller: "personal",action: "areaPersonal", params: [id: personalInstance.id])
+
+        render(view: "confirmarCadastro", model: [emailConfirmacao: alunoInstance.email, linkAtivacao:swapLink, alunoid:alunoInstance.id])
 
         /*
         request.withFormat {

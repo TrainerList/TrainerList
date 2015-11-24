@@ -14,11 +14,14 @@
 
 <body>
     <div class="container">
-        <h3>&nbsp&nbspFoi enviado um e-mail para: ${emailConfirmacao} para Confirmação de Cadastro.</h3>
+        <label id="lblFinalizado">
+        <h3>&nbsp&nbspFoi enviado um e-mail para: ${emailConfirmacao} para finalização do Cadastro.</h3>
+        </label>
         <br />
+        <g:link controller="aluno" action="adicionarAlunoLista" id="${alunoid}" >Lista</g:link>
         <br />
 
-        <a href="${linkAtivacao}">${linkAtivacao}</a>
+        <a href="${linkAtivacao}">Link Ativação</a>
     </div>
 </body>
 </html>

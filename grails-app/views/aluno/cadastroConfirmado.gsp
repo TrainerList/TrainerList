@@ -9,13 +9,19 @@
 <html>
 <head>
     <meta name="layout" content="main">
-    <title>Cadastro Confirmado</title>
+    <title>Cadastro Finalizado</title>
 </head>
 
 <body>
     <div class="container">
-        &nbspCadastro finalizado com sucesso. <br/><br/>
-        &nbspFaça o <a href="/TrainerList/" >login</a>.
+        <label id="lblFinalizado">
+            &nbspCadastro finalizado com sucesso. <br/><br/>
+            &nbspFaça o <a href="/TrainerList/" >login</a>.
+        </label>
+        <br />
+        <br />
+
+        <g:link controller="aluno" action="adicionarAlunoLista" id="${alunoid}" >Lista</g:link>
         <br />
     </div>
 </body>
