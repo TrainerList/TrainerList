@@ -32,7 +32,7 @@
 							$('#divAteFalha').show()
 							$('#divSerie').show()
 							$('#divRepeticao').show()
-							$('#divIntervalo').show()
+							$('#divIntervalo').show().ser
 						}
 					}
 				})

@@ -14,6 +14,12 @@ class SerieExercicio {
 
     static constraints = {
         status nullable: true
+        repeticao nullable: true
+        quantidadeRepeticao nullable: true
+        ateFalha nullable: true
+        tempoIntervalo nullable: true
+        minutos nullable: true
+
     }
 
     def beforeInsert(){

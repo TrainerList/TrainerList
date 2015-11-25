@@ -8,7 +8,7 @@
 	</label>
 
 	<g:if test="${Sistema.Exercicio.list().size() > 0}">
-		<g:select id="exercicio" name="exercicio.id" from="${Sistema.Exercicio.list()}" noSelection="['':'Selecione...']" optionValue="nome" valueMessagePrefix="cardio" optionKey="id" required=""  value="${serieExercicioInstance?.exercicio?.id}"
+		<g:select id="exercicio" name="exercicio.id" from="${Sistema.Exercicio.list()}" noSelection="['':'Selecione...']" optionValue="nome" valueMessagePrefix="cardio" optionKey="id"   value="${serieExercicioInstance?.exercicio?.id}"
 			  class="many-to-one" onchange="changeExercicio()" />
 	</g:if>
 	<g:else>
@@ -26,42 +26,42 @@
 </div>
 
 
-<div id="divMinutos" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'minutos', 'error')} required" style="display:none">
+<div id="divMinutos" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'minutos', 'error')}" style="display:none">
 	<label for="minutos">
 		<g:message code="serieExercicio.minutos.label" default="Minutos" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="minutos" type="number" value="${serieExercicioInstance.minutos}" required=""/>
+	<g:field name="minutos" type="number" value="${serieExercicioInstance.minutos}"/>
 
 </div>
 
 
-<div id="divRepeticao" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'repeticao', 'error')} required" style="display:none">
+<div id="divRepeticao" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'repeticao', 'error')}" style="display:none">
 	<label for="repeticao">
 		<g:message code="serieExercicio.repeticao.label" default="Série" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="repeticao" type="number" value="${serieExercicioInstance.repeticao}" required=""/>
+	<g:field name="repeticao" type="number" value="${serieExercicioInstance.repeticao}"/>
 
 </div>
 
 
-<div id="divSerie" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'quantidadeRepeticao', 'error')} required" style="display:none">
+<div id="divSerie" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'quantidadeRepeticao', 'error')}" style="display:none">
 	<label for="quantidadeRepeticao">
 		<g:message code="serieExercicio.quantidadeRepeticao.label" default="Repetições" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="quantidadeRepeticao" type="number" value="${serieExercicioInstance.quantidadeRepeticao}" required=""/>
+	<g:field name="quantidadeRepeticao" type="number" value="${serieExercicioInstance.quantidadeRepeticao}"/>
 
 </div>
 
 
-<div id="divIntervalo" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'tempoIntervalo', 'error')} required" style="display:none">
+<div id="divIntervalo" class="fieldcontain ${hasErrors(bean: serieExercicioInstance, field: 'tempoIntervalo', 'error')}" style="display:none">
 	<label for="tempoIntervalo">
 		<g:message code="serieExercicio.tempoIntervalo.label" default="Tempo Intervalo" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="tempoIntervalo" type="number" value="${serieExercicioInstance.tempoIntervalo}" required=""/>
+	<g:field name="tempoIntervalo" type="number" value="${serieExercicioInstance.tempoIntervalo}"/>
 
 </div>
 
