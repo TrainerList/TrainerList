@@ -1,6 +1,7 @@
 package Sistema
 
 import com.sun.org.apache.xpath.internal.operations.Bool
+import sun.management.jmxremote.ConnectorBootstrap
 
 class Exercicio {
 
@@ -13,5 +14,7 @@ class Exercicio {
     static hasMany = [imagensExercicio: ImagemExercicio, classesExercicio : ClasseExercicio]
 
     static constraints = {
+        descricao maxSize: 1000
+        status
     }
 }

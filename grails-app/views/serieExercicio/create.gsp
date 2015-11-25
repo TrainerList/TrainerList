@@ -56,10 +56,7 @@
 					$('#divRepeticao :input').attr('enabled', true)
 					$('#divIntervalo :input').attr('enabled', true)
 				}
-
-
 			}
-
 		</script>
 
 	</head>

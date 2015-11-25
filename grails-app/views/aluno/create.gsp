@@ -13,7 +13,36 @@
                 return false;
             }
         }
+
+        function onExitEmail() {
+            $.post("/TrainerList/perfil/getEmail",{
+                id: $("#email").val()
+            },function(data,status){
+                if (data.mensagem == "ERRO"){
+                    $('#emailCadastrado').removeClass("invisivel")
+                    $('#emailCadastrado').addClass("obrigatorio")
+                    $('#email').val = ""
+                    $('#email').focus()
+                }else{
+                    $('#emailCadastrado').removeClass("obrigatorio")
+                    $('#emailCadastrado').addClass("invisivel")
+                }
+            })
+        }
     </script>
+
+    <style type="text/css" media="screen">
+    span.invisivel {
+        display: none;
+        font-size: 10px;
+    }
+    span.obrigatorio {
+        display: inline;
+        color: #BC2F2F;
+        font-size: 10px;
+    }
+
+    </style>
 </head>
 
 <body>
