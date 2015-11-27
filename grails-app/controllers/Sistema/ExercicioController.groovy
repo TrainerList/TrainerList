@@ -111,6 +111,5 @@ class ExercicioController {
             resposta.mensagem = "ERRO"
             render resposta as JSON
         }
-
     }
 }

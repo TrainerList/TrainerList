@@ -68,4 +68,23 @@ class PerfilController {
 
         render(view: "logar", model:[mensagem:""])
     }
+
+    def getEmail(){
+        def resposta = [:]
+
+        if (params.id){
+            Perfil perfil = Perfil.findByEmail(params.id)
+
+            if (perfil != null) {
+                resposta.mensagem = "ERRO"
+            }
+            else{
+                resposta.mensagem = "OK"
+            }
+        }else{
+            resposta.mensagem = "OK"
+        }
+
+        render resposta as JSON
+    }
 }

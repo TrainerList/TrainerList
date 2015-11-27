@@ -29,6 +29,11 @@
 
 <body>
     <g:form url="[controller:'aluno', action: 'confirmarCadastro']" onsubmit="return valida(this);">
+
+        <div class="fieldcontain">
+            <label> Cadastre uma senha para finalizar seu cadastro. </label>
+        </div>
+
         <div class="fieldcontain ${hasErrors(bean: alunoInstance, field: 'senha', 'error')} ">
             <label for="senha">
                 Senha
