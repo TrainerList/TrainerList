@@ -13,5 +13,6 @@ class Exercicio {
     static hasMany = [imagensExercicio: ImagemExercicio, classesExercicio : ClasseExercicio]
 
     static constraints = {
+        descricao maxSize: 2000
     }
 }

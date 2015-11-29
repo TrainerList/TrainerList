@@ -56,15 +56,6 @@
 
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: exercicioInstance, field: 'status', 'error')} ">
-	<label for="cardio">
-		<g:message code="exercicio.cardio.label" default="Cardio" />
-
-	</label>
-	<g:checkBox name="cardio" value="${exercicioInstance?.cardio}" />
-
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: exercicioInstance, field: 'video', 'error')} required">
 	<label for="video">
 		<g:message code="exercicio.video.label" default="Video" />
