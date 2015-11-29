@@ -22,7 +22,8 @@
         <g:message code="personal.email.label" default="Email"/>
         <span class="required-indicator">*</span>
     </label>
-    <g:textField name="email" required="" value="${personalInstance?.email}"/>
+    <g:textField name="email" required="" value="${personalInstance?.email}" onchange="onExitEmail()"/>
+    <span id="emailCadastrado" class="invisivel"  >email já cadastrado</span>
 
 </div>
 

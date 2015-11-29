@@ -8,7 +8,7 @@
 	</label>
 
 	<g:if test="${Sistema.Exercicio.list().size() > 0}">
-		<g:select id="exercicio" name="exercicio.id" from="${Sistema.Exercicio.list()}" noSelection="['':'Selecione...']" optionValue="nome" valueMessagePrefix="cardio" optionKey="id" required=""  value="${serieExercicioInstance?.exercicio?.id}"
+		<g:select id="exercicio" name="exercicio.id" from="${Sistema.Exercicio.findAllByStatus(true)}" noSelection="['':'Selecione...']" optionValue="nome" valueMessagePrefix="cardio" optionKey="id" required=""  value="${serieExercicioInstance?.exercicio?.id}"
 			  class="many-to-one" onchange="changeExercicio()" />
 	</g:if>
 	<g:else>
@@ -31,7 +31,7 @@
 		<g:message code="serieExercicio.minutos.label" default="Minutos" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="minutos" type="number" value="${serieExercicioInstance.minutos}" required=""/>
+	<g:field id="minutos" name="minutos" type="number" value="${serieExercicioInstance.minutos}"/>
 
 </div>
 
@@ -41,7 +41,7 @@
 		<g:message code="serieExercicio.repeticao.label" default="Série" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="repeticao" type="number" value="${serieExercicioInstance.repeticao}" required=""/>
+	<g:field id="repeticao" name="repeticao" type="number" value="${serieExercicioInstance.repeticao}"/>
 
 </div>
 
@@ -51,7 +51,7 @@
 		<g:message code="serieExercicio.quantidadeRepeticao.label" default="Repetições" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="quantidadeRepeticao" type="number" value="${serieExercicioInstance.quantidadeRepeticao}" required=""/>
+	<g:field id="quantidadeRepeticao" name="quantidadeRepeticao" type="number" value="${serieExercicioInstance.quantidadeRepeticao}"/>
 
 </div>
 
@@ -61,7 +61,7 @@
 		<g:message code="serieExercicio.tempoIntervalo.label" default="Tempo Intervalo" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="tempoIntervalo" type="number" value="${serieExercicioInstance.tempoIntervalo}" required=""/>
+	<g:field id="tempoIntervalo" name="tempoIntervalo" type="number" value="${serieExercicioInstance.tempoIntervalo}"/>
 
 </div>
 

@@ -17,6 +17,10 @@ class PersonalController {
 
         alunos = Personal.findById(session.userId).alunos
 
+        if (alunos != null) {
+            alunos.sort{it.nome}
+        }
+
         render(view:"areaPersonal", model: [alunos: alunos, alunosCount: alunos.size()])
     }
 

@@ -16,14 +16,17 @@ class PerfilController {
                 if (perfil.status == true){
 
                     def userId = session["userId"]
+                    def userTipo = session["userTipo"]
 
                     session["userId"] = perfil.id
 
                     if (perfil.class == Personal){
+                        session["userTipo"] = "P"
                         resposta["ok"] = true
                         resposta["url"] = "/TrainerList/personal/areaPersonal"
                         render resposta as JSON
                     } else if(perfil.class == Aluno){
+                        session["userTipo"] = "A"
                         resposta["ok"] = true
                         resposta["url"] = "/TrainerList/aluno/areaAluno"
                         render resposta as JSON
@@ -67,5 +70,24 @@ class PerfilController {
         session["userId"] = null
 
         render(view: "logar", model:[mensagem:""])
+    }
+
+    def getEmail(){
+        def resposta = [:]
+
+        if (params.id){
+            Perfil perfil = Perfil.findByEmail(params.id)
+
+            if (perfil != null) {
+                resposta.mensagem = "ERRO"
+            }
+            else{
+                resposta.mensagem = "OK"
+            }
+        }else{
+            resposta.mensagem = "OK"
+        }
+
+        render resposta as JSON
     }
 }

@@ -22,7 +22,7 @@ class TreinoController {
             aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
         }
 
-        render(view: "listar",model: [treinos: aluno.treinos])
+        render(view: "listar",model: [treinos: aluno.treinos,TipoUser:session["userTipo"]])
     }
 
     def adicionarSerieExercicio(){
@@ -40,10 +40,36 @@ class TreinoController {
             serieExercicio.ateFalha = false
         }
 
-        serieExercicio.tempoIntervalo = params.int("tempoIntervalo")
-        serieExercicio.repeticao = params.int("repeticao")
-        serieExercicio.quantidadeRepeticao = params.int("quantidadeRepeticao")
-        serieExercicio.minutos = params.int("minutos")
+        if (params.tempoIntervalo == ""){
+            serieExercicio.tempoIntervalo = 0
+        }else{
+            serieExercicio.tempoIntervalo = params.int("tempoIntervalo")
+        }
+
+        if (params.repeticao == ""){
+            serieExercicio.repeticao = 0
+        }else{
+            serieExercicio.repeticao = params.int("repeticao")
+        }
+
+        if (params.quantidadeRepeticao == ""){
+            serieExercicio.quantidadeRepeticao = 0
+        }else{
+            serieExercicio.quantidadeRepeticao = params.int("quantidadeRepeticao")
+        }
+
+        if (params.minutos == ""){
+            serieExercicio.minutos = 0
+        }else{
+            serieExercicio.minutos = params.int("minutos")
+        }
+
+        if (params.tempoIntervalo == ""){
+            serieExercicio.tempoIntervalo = 0
+        }else{
+            serieExercicio.tempoIntervalo = params.int("tempoIntervalo")
+        }
+
         serieExercicio.status = true
         serieExercicio.exercicio = exerc
 
@@ -54,6 +80,38 @@ class TreinoController {
         } else {
             render(view: "create", model: [treinoInstance:newTreino])
         }
+    }
+
+    def removerSerieExercicio(){
+        if (newTreino != null) {
+
+            for (int i =0; i < newTreino.seriesExercicios.size(); i++) {
+                if (newTreino.seriesExercicios[i].exercicio.id == params.int("exercicioId")){
+                    if (newTreino.seriesExercicios[i].exercicio.cardio == params.boolean(cardio)){
+                        if (newTreino.seriesExercicios[i].minutos == params.int("minutos")){
+                            newTreino.removeFromSeriesExercicios(newTreino.seriesExercicios[i])
+                            break
+                        }
+                    }else{
+                        if (newTreino.seriesExercicios[i].tempoIntervalo == params.int("tempoIntervalo")){
+                            if (newTreino.seriesExercicios[i].ateFalha == params.boolean("ateFalha")){
+                                newTreino.removeFromSeriesExercicios(newTreino.seriesExercicios[i])
+                                break
+                            }else{
+                                if (newTreino.seriesExercicios[i].repeticao == params.int("repeticao")){
+                                    if (newTreino.seriesExercicios[i].quantidadeRepeticao == params.int("quantidadeRepeticao")){
+                                        newTreino.removeFromSeriesExercicios(newTreino.seriesExercicios[i])
+                                        break
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        render(view: "create", model: [treinoInstance:newTreino])
     }
 
     def inativar(){
@@ -81,7 +139,7 @@ class TreinoController {
     }
 
     def show(Treino treinoInstance) {
-        respond treinoInstance
+        respond treinoInstance, model:[TipoUser:session["userTipo"]]
     }
 
     def create() {
@@ -108,12 +166,10 @@ class TreinoController {
                 newTreino.validate()
 
                 if (!newTreino.hasErrors()) {
-
-                    newTreino.save(flash: true)
-
                     resposta["ok"] = true
                     resposta["url"] = "/TrainerList/treino/listarTreino"
-                    //redirect(action: "listarTreino")
+
+                    newTreino.save(flash: true)
                 }
             } else {
                 resposta["ok"] = false

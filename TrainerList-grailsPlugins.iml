@@ -16,6 +16,14 @@
         <naming-strategy-map />
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/target/work/plugins/database-migration-1.4.0/src/groovy/grails/plugin/databasemigration/MysqlAwareCreateTableGenerator.groovy</file>
+          <file>file://$MODULE_DIR$/target/work/plugins/asset-pipeline-1.9.6/src/docs/guide/usage.gdoc</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />

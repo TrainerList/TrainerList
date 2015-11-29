@@ -26,9 +26,14 @@
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                     <td>
                         ${fieldValue(bean:treino, field: "descricao")}
-                        <g:link action="edit" resource="${treino}" >Ed.</g:link>
 
-                        <g:link action="inativar" id="${treino.id}" onclick="return confirm('Remover este Treino?');" >Rem.</g:link>
+                        &nbsp<g:link action="show" resource="${treino}" ><asset:image src="/skin/visualizar_20.png" alt="Vizualizar"/></g:link>
+
+                        <g:if test="${TipoUser} == 'P'">
+                            &nbsp<g:link action="edit" resource="${treino}" ><asset:image src="/skin/editar_20.png" alt="Remover"/></g:link>
+
+                            &nbsp<g:link action="inativar" id="${treino.id}" onclick="return confirm('Remover este Treino?');" ><asset:image src="/skin/inativar_20.png" alt="Remover"/></g:link>
+                        </g:if>
                     </td>
                 </tr>
             </g:each>
@@ -37,7 +42,7 @@
     </g:if>
     <g:else>
         <br />
-        Nenhum treino encontrado!
+        <h3>&nbsp&nbspNenhum treino encontrado!</h3>
     </g:else>
 </body>
 </html>

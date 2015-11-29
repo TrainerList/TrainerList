@@ -62,14 +62,19 @@
 									<g:else>
 										${seriesExercicio.repeticao} X ${seriesExercicio.quantidadeRepeticao}
 									</g:else>
+
+									Intevalo: ${seriesExercicio.tempoIntervalo} seg
 								</g:else>
 							</li>
 
-							<li><g:link class="edit" controller="serieExercicio" action="edit" resource="${seriesExercicio}"><img height="16px" width="0px"></g:link></li>
 
-							<g:if test="${seriesExercicio.id} != null">
-								<li><g:link class="delete" action="inativar" resource="${seriesExercicio}" onclick="return confirm('Confirmar Inativação?');"> <img height="16px"></g:link></li>
-							</g:if>
+								<li><g:link action="removerSerieExercicio" params="exercicioId:'${seriesExercicio.exercicio.id}',ateFalha:'${seriesExercicio.ateFalha}',repeticao:'${seriesExercicio.repeticao}',
+																					tempoIntervalo:'${seriesExercicio.tempoIntervalo}',cardio:'${seriesExercicio.exercicio.cardio}'"
+											onclick="return confirm('Confirmar Remoção?');">
+										<asset:image src="/skin/inativar_20.png" alt="Remover"/>
+									</g:link>
+								</li>
+
 						</fieldset>
 					</td>
 				</tr>

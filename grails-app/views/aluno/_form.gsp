@@ -26,7 +26,8 @@
         e-mail
         <span class="required-indicator">*</span>
     </label>
-    <g:field type="email" name="email" required="" value="${alunoInstance?.email}"/>
+    <g:field id="email" type="email" name="email" required="" value="${alunoInstance?.email}" onchange="onExitEmail()"/>
+    <span id="emailCadastrado" class="invisivel"  >email já cadastrado</span>
 
 </div>
 

@@ -12,9 +12,9 @@
 				$.post("/TrainerList/exercicio/get",{
 					id: $("#exercicio").val()
 				},function(data,status){
-					if (data.mensagem == "ERRO"){
-						alert("deu pau")
-					}else{
+					if (data.mensagem != "ERRO"){
+						//alert("deu pau")
+					//}else{
 						var exercicio = data
 						console.log(exercicio.cardio)
 						if (exercicio.cardio == true){
@@ -56,10 +56,7 @@
 					$('#divRepeticao :input').attr('enabled', true)
 					$('#divIntervalo :input').attr('enabled', true)
 				}
-
-
 			}
-
 		</script>
 
 	</head>
@@ -83,7 +80,7 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:serieExercicioInstance, action:'save']" >
+			<g:form url="[resource:serieExercicioInstance, controller:'serieExercicio', action:'save']" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>

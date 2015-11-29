@@ -30,10 +30,9 @@
                         <td>
                             ${fieldValue(bean: aluno, field: "nome")}
 
-                            <g:link controller="treino" action="listarTreino" id="${aluno.id}" >Treino</g:link>
-                            <!-- controller="AvaliacaoFisica" -->
-                            <g:link  action="edit" id="${aluno.id}">Avaliação Física</g:link>
-                            <g:link  action="inativarAluno" id="${aluno.id}" onclick="return confirm('Realmente quer remover o Aluno?');" >Remover</g:link>
+                            &nbsp<g:link controller="treino" action="listarTreino" id="${aluno.id}" ><asset:image src="/skin/treino_20.png" alt="Treino"/></g:link>
+                            &nbsp<g:link controller="AvaliacaoFisica" action="listarAvaliacoesFisicas" id="${aluno.id}"><asset:image src="/skin/heart_20.png" alt="Avaliação Física"/></g:link>
+                            &nbsp<g:link action="inativarAluno" id="${aluno.id}" onclick="return confirm('Realmente quer remover o Aluno?');" ><asset:image src="/skin/inativar_20.png" alt="Remover"/></g:link>
                         </td>
                     </tr>
                 </g:each>

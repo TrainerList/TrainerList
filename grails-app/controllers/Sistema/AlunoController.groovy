@@ -1,5 +1,7 @@
 package Sistema
 
+import grails.converters.JSON
+
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
@@ -23,6 +25,10 @@ class AlunoController {
         if (mensagem != ''){
             mensagemResposta = mensagem
             mensagem = ""
+        }
+
+        if (alunos) {
+            alunos.sort{it.nome}
         }
 
         render(view: "listar", model: [alunos:alunos, alunosCount:alunos.size(), mensagem:mensagemResposta])
@@ -83,11 +89,31 @@ class AlunoController {
     }
 
     def areaAluno(){
+        int tipo
+
+        if (params.tipo == null){
+            tipo = 0
+        }else if(params.tipo == "0") {
+            tipo = 0
+        }else if(params.tipo == "1") {
+            tipo = 1
+        }
+
         Aluno aluno = Aluno.findById(session.userId)
 
-        Treino treinos = Treino.findAllByAluno(aluno)
-        
-        render(view: "areaAluno",Model:[treinos:treinos])
+        if (tipo == 0) {
+            def treinos = []
+
+            treinos = Treino.findAllByAlunoAndStatus(aluno, true)
+
+            render(view: "areaAluno", Model: [treinos: treinos])
+        }else if (tipo == 1) {
+            def avaliacoesFisicas = []
+
+            avaliacoesFisicas = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
+
+            render(view: "areaAluno", Model: [avaliacoesFisicas: avaliacoesFisicas])
+        }
     }
 
     def alterarSenha(){

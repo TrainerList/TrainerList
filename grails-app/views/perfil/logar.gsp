@@ -13,7 +13,6 @@
                 alert(data.msg);
             }
         }
-
     </script>
 
     <style type="text/css" media="screen">
@@ -108,19 +107,19 @@
             <div class="row">
                 <div class="input-field col s8">
                     <label for="email">e-mail</label>
-                    <g:textField name="email" value="${emial}" />  <br /> <br />
+                    <g:textField id="email" name="email" value="${emial}" />  <br /> <br />
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s8">
                     <label for="password">Senha</label>
-                    <g:passwordField name="senha" value=""/> <br />
+                    <g:passwordField id="senha" name="senha" value=""/> <br />
                 </div>
             </div>
         </div>
         <br />
 
-        <button class="btn waves-effect waves-light" type="submit" name="logar" value="Entrar">Entrar
+        <button class="btn waves-effect waves-light" type="submit" id="logar" name="logar" value="Entrar">Entrar
             <!--<i class="material-icons right">send</i>-->
         </button>
 
