@@ -11,8 +11,10 @@
 			function Sucesso(data){
 				if(data.ok == true){
 					location.href = data.url;
+					console.log("entrou aqui ok")
 				}else{
 					alert(data.msg);
+					console.log("entrou aqui zica")
 				}
 			}
 		</script>
