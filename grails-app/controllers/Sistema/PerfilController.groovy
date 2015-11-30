@@ -4,6 +4,20 @@ import grails.converters.JSON
 
 class PerfilController {
 
+    def areaTrabalho(){
+        if (session["userId"]){
+            Perfil perfil = Perfil.findById(session["userId"])
+
+            if (perfil.class == Personal){
+                redirect(controller: "personal", action: "areaPersonal")
+            } else if(perfil.class == Aluno){
+                redirect(controller: "aluno", action: "areaAluno")
+            }
+        }else{
+            render(view:"logar")
+        }
+    }
+
     def logar(){
         def resposta = [:]
 

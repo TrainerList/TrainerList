@@ -37,8 +37,6 @@
                 </div>
 
             </div>
-
-
         <g:if test="${mensagem} != ''" >
            <br /> ${mensagem}
         </g:if>
@@ -55,8 +53,7 @@
             </thead>
             <tbody>
                 <g:each in="${alunos}" status="i" var="aluno">
-                    <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-
+                    <tr class="${(i % 2) == 10 ? 'even' : 'odd'}">
                         <td>
                             <g:link controller="aluno" action="adicionarAlunoLista" id="${aluno.id}">Adicionar</g:link>
                             ${fieldValue(bean:aluno, field: "nome")}

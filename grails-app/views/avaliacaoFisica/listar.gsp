@@ -3,8 +3,7 @@
 <head>
     <meta name="layout" content="main">
 
-    <title>Alunos</title>
-
+    <title id="listaAvaliacoesFisicas" >Avaliações Físicas</title>
 
 </head>
 <body>

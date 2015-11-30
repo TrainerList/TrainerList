@@ -68,9 +68,7 @@
 							</li>
 
 
-								<li><g:link action="removerSerieExercicio" params="exercicioId:'${seriesExercicio.exercicio.id}',ateFalha:'${seriesExercicio.ateFalha}',repeticao:'${seriesExercicio.repeticao}',
-																					tempoIntervalo:'${seriesExercicio.tempoIntervalo}',cardio:'${seriesExercicio.exercicio.cardio}'"
-											onclick="return confirm('Confirmar Remoção?');">
+								<li><g:link action="removerSerieExercicio" resource="${treinoInstance}" id="${seriesExercicio.id}" onclick="return confirm('Confirmar Remoção?');">
 										<asset:image src="/skin/inativar_20.png" alt="Remover"/>
 									</g:link>
 								</li>

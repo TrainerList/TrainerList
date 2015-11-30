@@ -19,7 +19,7 @@ class AlunoController {
         if (params.nome == null || params.nome == ""){
             alunos = Aluno.findAllByStatus(true)
         }else {
-            alunos = Aluno.findAllByNomeIlikeAndStatus(params.nome, true)
+            alunos = Aluno.findAllByStatusAndNomeIlike(true, "%"+params.nome+"%")
         }
 
         if (mensagem != ''){
@@ -105,6 +105,8 @@ class AlunoController {
             render(view: "areaAluno", model: [treinos: aluno.treinos,tipoLoad:tipo])
         }else if (tipo == "AF") {
             aluno.avalicoesFisicas = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
+
+            //aluno.avalicoesFisicas.sort(it.data)
 
             render(view: "areaAluno", model: [avaliacoesFisicas: aluno.avalicoesFisicas,tipoLoad:tipo])
         }

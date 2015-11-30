@@ -23,7 +23,7 @@
 	</head>
 	<body>
 
-		<div id="grailsLogo" role="banner"> <g:link controller="perfil" action="logar"> <asset:image src="trainerlist_logo.png" alt="TrainerList"/></g:link></div>
+		<div id="grailsLogo" role="banner"> <g:link controller="perfil" action="areaTrabalho"> <asset:image src="trainerlist_logo.png" alt="TrainerList"/></g:link></div>
 		<g:layoutBody/>
 		<div class="footer" role="contentinfo"></div>
 		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>

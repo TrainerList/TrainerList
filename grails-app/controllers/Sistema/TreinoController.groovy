@@ -82,36 +82,18 @@ class TreinoController {
         }
     }
 
-    def removerSerieExercicio(){
-        if (newTreino != null) {
+    def removerSerieExercicio(Treino treinoInstance){
+        if (treinoInstance != null) {
 
-            for (int i =0; i < newTreino.seriesExercicios.size(); i++) {
-                if (newTreino.seriesExercicios[i].exercicio.id == params.int("exercicioId")){
-                    if (newTreino.seriesExercicios[i].exercicio.cardio == params.boolean(cardio)){
-                        if (newTreino.seriesExercicios[i].minutos == params.int("minutos")){
-                            newTreino.removeFromSeriesExercicios(newTreino.seriesExercicios[i])
-                            break
-                        }
-                    }else{
-                        if (newTreino.seriesExercicios[i].tempoIntervalo == params.int("tempoIntervalo")){
-                            if (newTreino.seriesExercicios[i].ateFalha == params.boolean("ateFalha")){
-                                newTreino.removeFromSeriesExercicios(newTreino.seriesExercicios[i])
-                                break
-                            }else{
-                                if (newTreino.seriesExercicios[i].repeticao == params.int("repeticao")){
-                                    if (newTreino.seriesExercicios[i].quantidadeRepeticao == params.int("quantidadeRepeticao")){
-                                        newTreino.removeFromSeriesExercicios(newTreino.seriesExercicios[i])
-                                        break
-                                    }
-                                }
-                            }
-                        }
-                    }
+            for (int i =0; i < treinoInstance.seriesExercicios.size(); i++) {
+                if (treinoInstance.seriesExercicios[i].id == params.id){
+                    treinoInstance.removeFromSeriesExercicios(treinoInstance.seriesExercicios[i])
+                    break;
                 }
             }
         }
 
-        render(view: "create", model: [treinoInstance:newTreino])
+        render(view: "create", model: [treinoInstance:treinoInstance])
     }
 
     def inativar(){
@@ -186,43 +168,26 @@ class TreinoController {
     def edit(Treino treinoInstance) {
         editar = true
 
-        if (newTreino == null) {
-            newTreino = treinoInstance
-        } else if (treinoInstance != null) {
-            if (newTreino.id != treinoInstance.id){
-                newTreino = treinoInstance
-            }
-        }
+        treinoInstance.seriesExercicios = Treino.findById(treinoInstance.id).seriesExercicios
 
-        newTreino.seriesExercicios = Treino.findById(newTreino.id).seriesExercicios
-
-        respond newTreino
+        respond treinoInstance
     }
 
     @Transactional
     def update(Treino treinoInstance) {
-        /*newTreino.validate()
-
-        if (!newTreino.hasErrors()){
-            newTreino.save(flush: true)
-
-
-        }*/
-
-        if (newTreino == null) {
+        if (treinoInstance == null) {
             notFound()
             return
         }
 
-        if (newTreino.hasErrors()) {
-            respond newTreino.errors, view:'edit'
+        if (treinoInstance.hasErrors()) {
+            respond treinoInstance.errors, view:'edit'
             return
         }
 
-        newTreino.save flush:true
+        treinoInstance.save flush:true
 
         redirect(action: "listarTreino")
-
     }
 
     @Transactional

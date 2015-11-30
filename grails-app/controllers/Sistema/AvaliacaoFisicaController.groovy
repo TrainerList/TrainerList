@@ -17,6 +17,8 @@ class AvaliacaoFisicaController {
 
         if (aluno != null) {
             aluno.avalicoesFisicas = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
+
+            //aluno.avalicoesFisicas.sort(it.data)
         }
 
         render(view: "listar",model: [avaliacoesFisicas: aluno.avalicoesFisicas,TipoUser:session["userTipo"]])

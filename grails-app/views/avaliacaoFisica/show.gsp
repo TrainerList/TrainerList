@@ -176,7 +176,7 @@
 				<g:form url="[resource:avaliacaoFisicaInstance, action:'delete']" method="DELETE">
 					<fieldset class="buttons">
 						<g:link class="edit" action="edit" resource="${avaliacaoFisicaInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-						<g:actionSubmit class="delete" action="inativar" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('Remover este Treino?');" />
+						<g:actionSubmit id="Inativar" class="delete" action="inativar" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('Remover este Treino?');" />
 					</fieldset>
 				</g:form>
 			</g:if>
