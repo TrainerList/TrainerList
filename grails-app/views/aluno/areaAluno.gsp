@@ -10,8 +10,8 @@
 <body>
     <div class="nav" role="navigation">
         <ul>
-            <li><g:link action="areaAluno" params="[tipo:0]"><asset:image src="/skin/treino_20.png" alt="Treino"/> Treinos</g:link></li>
-            <li><g:link action="areaAluno" params="[tipo:1]" ><asset:image src="/skin/heart_20.png" alt="Treino"/> Avaliações Físicas</g:link></li>
+            <li><g:link action="areaAluno" params="[tipo:'T']"><asset:image src="/skin/treino_20.png" alt="Treino"/> Treinos</g:link></li>
+            <li><g:link action="areaAluno" params="[tipo:'AF']" ><asset:image src="/skin/heart_20.png" alt="Treino"/> Avaliações Físicas</g:link></li>
         </ul>
     </div>
 
@@ -27,10 +27,9 @@
                 <g:each in="${treinos}" status="i" var="treino">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                         <td>
-                            <g:link action="edit" resource="${treino}"><asset:image src="/skin/editar_20.png" alt="Editar"/></g:link>
                             ${fieldValue(bean:treino, field: "descricao")}
 
-                            <g:link action="inativar" Id="${treino.id}"><asset:image src="/skin/inativar_20.png" alt="Remover"/></g:link>
+                            &nbsp<g:link controller="treino" action="show" resource="${treino}" ><asset:image src="/skin/visualizar_20.png" alt="Vizualizar"/></g:link>
                         </td>
                     </tr>
                 </g:each>
@@ -54,10 +53,9 @@
                 <g:each in="${avaliacoesFisicas}" status="i" var="avaliacaoFisica">
                     <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
                         <td>
-                            <g:link action="edit" resource="${avaliacaoFisica}"><asset:image src="/skin/editar_20.png" alt="Editar"/></g:link>
-                            ${fieldValue(bean:avaliacaoFisica, field: "data")}
+                            <g:formatDate format="dd/MM/yyyy" date="${avaliacaoFisica.data}"/>
 
-                            <g:link action="inativar" Id="${avaliacaoFisica.id}"><asset:image src="/skin/inativar_20.png" alt="Remover"/></g:link>
+                            &nbsp<g:link controller="avaliacaoFisica" action="show" resource="${avaliacaoFisica}" ><asset:image src="/skin/visualizar_20.png" alt="Vizualizar"/></g:link>
                         </td>
                     </tr>
                 </g:each>
@@ -73,6 +71,8 @@
         <br />
         <h3>&nbsp&nbsp Nenhum Dado encontrado!</h3>
     </g:else>
+
+
     <fieldset class="buttons">
         <g:link class="edit" action="edit" >Perfil</g:link>
         <g:link controller="perfil" action="logoff" >Logoff</g:link>

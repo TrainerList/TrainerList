@@ -11,11 +11,16 @@
 		<a href="#show-treino" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div class="nav" role="navigation">
 			<ul>
-				<li><g:link class="list" action="listarTreino">Treino</g:link></li>
+ 				<g:if test="${TipoUser == 'P'}">
+					<li><g:link class="list" action="listarTreino">Voltar</g:link></li>
+				</g:if>
+				<g:else>
+					<li><g:link controller="aluno" class="list" action="areaAluno" params="[tipo:'T']">Voltar</g:link></li>
+				</g:else>
 			</ul>
 		</div>
 		<div id="show-treino" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
+			<h1>Treino</h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -42,9 +47,7 @@
 				<g:if test="${treinoInstance?.descricao}">
 				<li class="fieldcontain">
 					<span id="descricao-label" class="property-label">Descrição</span>
-					
-						<span class="property-value" aria-labelledby="descricao-label"><g:fieldValue bean="${treinoInstance}" field="descricao"/></span>
-					
+					<span class="property-value" aria-labelledby="descricao-label"><g:fieldValue bean="${treinoInstance}" field="descricao"/></span>
 				</li>
 				</g:if>
 			
@@ -82,7 +85,7 @@
 				</g:if>
 			
 			</ol>
-			<g:if test="${TipoUser} == 'P'">
+			<g:if test="${TipoUser == 'P'}">
 				<g:form url="[resource:treinoInstance, action:'delete']" method="DELETE">
 					<fieldset class="buttons">
 						<g:link class="edit" action="edit" resource="${treinoInstance}"><g:message code="default.button.edit.label" default="Edit" /></g:link>

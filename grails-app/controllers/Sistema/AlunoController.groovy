@@ -89,30 +89,24 @@ class AlunoController {
     }
 
     def areaAluno(){
-        int tipo
+        String tipo
 
         if (params.tipo == null){
-            tipo = 0
-        }else if(params.tipo == "0") {
-            tipo = 0
-        }else if(params.tipo == "1") {
-            tipo = 1
+            tipo = "T"
+        }else {
+            tipo = params.tipo
         }
 
         Aluno aluno = Aluno.findById(session.userId)
 
-        if (tipo == 0) {
-            def treinos = []
+        if (tipo == "T") {
+            aluno.treinos = Treino.findAllByAlunoAndStatus(aluno, true)
 
-            treinos = Treino.findAllByAlunoAndStatus(aluno, true)
+            render(view: "areaAluno", model: [treinos: aluno.treinos,tipoLoad:tipo])
+        }else if (tipo == "AF") {
+            aluno.avalicoesFisicas = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
 
-            render(view: "areaAluno", Model: [treinos: treinos])
-        }else if (tipo == 1) {
-            def avaliacoesFisicas = []
-
-            avaliacoesFisicas = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
-
-            render(view: "areaAluno", Model: [avaliacoesFisicas: avaliacoesFisicas])
+            render(view: "areaAluno", model: [avaliacoesFisicas: aluno.avalicoesFisicas,tipoLoad:tipo])
         }
     }
 
