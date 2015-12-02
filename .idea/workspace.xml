@@ -1,21 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8230d4de-064c-487e-b675-bb4a8ccf97b2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/JMeter/TrainerList.jmx" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Selenium/US02 - Verificar Senha.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Selenium/US04 - Cadastrar Aluno.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Selenium/US16_US18 - Visualizar Avaliacão Fisica.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Selenium/US34_US32 - Listar Avaliacão Fisica.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/Sistema/AlunoController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/Sistema/AlunoController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/Sistema/AvaliacaoFisicaController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/Sistema/AvaliacaoFisicaController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/Sistema/PerfilController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/Sistema/PerfilController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/controllers/Sistema/TreinoController.groovy" afterPath="$PROJECT_DIR$/grails-app/controllers/Sistema/TreinoController.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/treino/_form.gsp" afterPath="$PROJECT_DIR$/grails-app/views/treino/_form.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/aluno/listar.gsp" afterPath="$PROJECT_DIR$/grails-app/views/aluno/listar.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/avaliacaoFisica/listar.gsp" afterPath="$PROJECT_DIR$/grails-app/views/avaliacaoFisica/listar.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" afterPath="$PROJECT_DIR$/grails-app/views/layouts/main.gsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/views/avaliacaoFisica/show.gsp" afterPath="$PROJECT_DIR$/grails-app/views/avaliacaoFisica/show.gsp" />
+    <list default="true" id="8230d4de-064c-487e-b675-bb4a8ccf97b2" name="Default" comment="Adição do Projeto do JUnit do Eclipse e ajustes na classe de alunos.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/grails-app/domain/Sistema/Aluno.groovy" afterPath="$PROJECT_DIR$/grails-app/domain/Sistema/Aluno.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="TrainerList.iws" />
@@ -39,76 +26,14 @@
     <favorites_list name="TrainerList" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="TreinoController.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/Sistema/TreinoController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="93" column="9" selection-start-line="93" selection-start-column="9" selection-end-line="93" selection-end-column="9" />
-              <folding>
-                <element signature="n#!!block;n#listarTreino#0;n#!!block;n#TreinoController#0" expanded="false" />
-                <element signature="n#!!block;n#adicionarSerieExercicio#0;n#!!block;n#TreinoController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AlunoController.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/Sistema/AlunoController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="108" column="14" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
-              <folding>
-                <element signature="n#!!block;n#listar#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#adicionarAlunoLista#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#listarById#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#pesquisar#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#alterarSenha#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#finalizarCadastro#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#confirmarCadastro#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#index#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#save#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#update#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#delete#0;n#!!block;n#AlunoController#0" expanded="false" />
-                <element signature="n#!!block;n#notFound#0;n#!!block;n#AlunoController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AvaliacaoFisicaController.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/controllers/Sistema/AvaliacaoFisicaController.groovy">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="listar.gsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/avaliacaoFisica/listar.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.39130434">
-              <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_form.gsp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/grails-app/views/treino/_form.gsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="70" column="73" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="LucasBittencourt &lt;bittencourt_lucas@hotmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
@@ -119,7 +44,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/grails-app/views/exercicio/index.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/exercicio/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/imagemExercicio/create.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/imagemExercicio/edit.gsp" />
@@ -170,6 +94,7 @@
         <option value="$PROJECT_DIR$/grails-app/controllers/Sistema/AvaliacaoFisicaController.groovy" />
         <option value="$PROJECT_DIR$/grails-app/views/avaliacaoFisica/show.gsp" />
         <option value="$PROJECT_DIR$/grails-app/views/avaliacaoFisica/listar.gsp" />
+        <option value="$PROJECT_DIR$/grails-app/domain/Sistema/Aluno.groovy" />
       </list>
     </option>
   </component>
@@ -209,6 +134,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -228,24 +155,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrainerList" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="TrainerList" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="grails-app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -545,7 +456,9 @@
       <workItem from="1448905668360" duration="5341000" />
       <workItem from="1448918619621" duration="3355000" />
       <workItem from="1448922002716" duration="1255000" />
-      <workItem from="1448924202014" duration="14000" />
+      <workItem from="1448924202014" duration="799000" />
+      <workItem from="1449012110150" duration="2428000" />
+      <workItem from="1449017306974" duration="84000" />
     </task>
     <task id="LOCAL-00001" summary="Ajuste do WorkSpace">
       <created>1448317786351</created>
@@ -571,11 +484,23 @@
       <option name="project" value="LOCAL" />
       <updated>1448844010151</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Finalização do Create e visualização da Avaliação Física.">
+      <created>1448924261725</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1448924261725</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Adição de Imagem">
+      <created>1448924304179</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1448924304179</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23366000" />
+    <option name="totallyTimeSpent" value="26663000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1036" extended-state="6" />
@@ -589,12 +514,12 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="CDI" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928178" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3281768" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17909536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17909536" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -607,7 +532,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Console" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32596686" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32596686" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -630,7 +555,11 @@
     <MESSAGE value="Ajuste do WorkSpace" />
     <MESSAGE value="Ajuste do Projeto." />
     <MESSAGE value="Ajuste na Visualização das avaliaçoes fisicas, pelo aluno e personal." />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajuste na Visualização das avaliaçoes fisicas, pelo aluno e personal." />
+    <MESSAGE value="Finalização do Create e visualização da Avaliação Física." />
+    <MESSAGE value="Adição de Imagem" />
+    <MESSAGE value="Adição do Projeto do JUnit do Eclipse e ajustes na classe de alunos" />
+    <MESSAGE value="Adição do Projeto do JUnit do Eclipse e ajustes na classe de alunos." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adição do Projeto do JUnit do Eclipse e ajustes na classe de alunos." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -686,13 +615,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/grails-app/views/serieExercicio/create.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/treino/index.gsp">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -799,95 +721,83 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/Exercicio.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32969698">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/SerieExercicio.groovy">
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/SerieExercicio.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.041212123">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/Personal.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.041212123">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/Perfil.groovy">
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/Perfil.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4121212">
           <caret line="20" column="28" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/ImagemExercicio.groovy">
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/ImagemExercicio.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.041212123">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/ClasseExercicio.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.041212123">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/AvaliacaoFisica.groovy">
       <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/AvaliacaoFisica.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.00969697">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
         </state>
       </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/Aluno.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.041212123">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/Treino.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.041212123">
           <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-          <folding />
         </state>
-      </provider>
-      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
-        <state />
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/Documents/GrailsVersoes/grails-2.4.3/lib/org.springframework/spring-webmvc/jars/spring-webmvc-4.0.6.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
@@ -1033,11 +943,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/treino/_form.gsp">
+    <entry file="file://$PROJECT_DIR$/grails-app/views/avaliacaoFisica/show.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="70" column="73" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="73" />
-          <folding />
+        <state vertical-scroll-proportion="0.58536583">
+          <caret line="178" column="52" selection-start-line="178" selection-start-column="44" selection-end-line="178" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23488773">
+          <caret line="8" column="97" selection-start-line="8" selection-start-column="94" selection-end-line="8" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/domain/Sistema/Aluno.groovy">
+      <provider editor-type-id="org.jetbrains.plugins.grails.perspectives.DomainClassesRelationsEditorProvider">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49905837">
+          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/controllers/Sistema/AlunoController.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.60714287">
+          <caret line="181" column="0" selection-start-line="181" selection-start-column="0" selection-end-line="181" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!block;n#listar#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#adicionarAlunoLista#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#listarById#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#pesquisar#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#alterarSenha#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#finalizarCadastro#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#confirmarCadastro#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#index#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#update#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#delete#0;n#!!block;n#AlunoController#0" expanded="false" />
+            <element signature="n#!!block;n#notFound#0;n#!!block;n#AlunoController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1052,46 +998,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/controllers/Sistema/AlunoController.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="108" column="14" selection-start-line="108" selection-start-column="14" selection-end-line="108" selection-end-column="14" />
-          <folding>
-            <element signature="n#!!block;n#listar#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#adicionarAlunoLista#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#listarById#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#pesquisar#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#alterarSenha#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#finalizarCadastro#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#confirmarCadastro#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#index#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#save#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#update#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#delete#0;n#!!block;n#AlunoController#0" expanded="false" />
-            <element signature="n#!!block;n#notFound#0;n#!!block;n#AlunoController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/grails-app/views/avaliacaoFisica/show.gsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58536583">
-          <caret line="178" column="52" selection-start-line="178" selection-start-column="44" selection-end-line="178" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/controllers/Sistema/AvaliacaoFisicaController.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/grails-app/views/avaliacaoFisica/listar.gsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.39130434">
-          <caret line="21" column="20" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="20" />
+        <state vertical-scroll-proportion="0.7022472">
+          <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/grails-app/views/treino/_form.gsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42696628">
+          <caret line="70" column="73" selection-start-line="70" selection-start-column="52" selection-end-line="70" selection-end-column="73" />
           <folding />
         </state>
       </provider>

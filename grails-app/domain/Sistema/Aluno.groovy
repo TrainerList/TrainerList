@@ -14,7 +14,7 @@ class Aluno extends Perfil {
 
     Aluno() {
         dataCadastro = new Date();
-        status = true
+        status = false
     }
 
     static constraints = {
