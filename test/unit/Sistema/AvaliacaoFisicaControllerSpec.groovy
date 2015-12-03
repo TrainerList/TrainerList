@@ -5,7 +5,7 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(AvaliacaoFisicaController)
-@Mock(AvaliacaoFisica)
+@Mock([AvaliacaoFisica, Aluno, Personal])
 class AvaliacaoFisicaControllerSpec extends Specification {
 
     def populateValidParams(params) {
@@ -14,138 +14,174 @@ class AvaliacaoFisicaControllerSpec extends Specification {
         //params["name"] = 'someValidName'
     }
 
-    void "Test the index action returns the correct model"() {
+    void "nao cadastrar caso os campos Peso e Altura nao informado"() {
 
-        when: "The index action is executed"
-        controller.index()
+        when:
+        Aluno aluno = new Aluno()
 
-        then: "The model is correct"
-        !model.avaliacaoFisicaInstanceList
-        model.avaliacaoFisicaInstanceCount == 0
+        aluno.nome = nome
+        aluno.dataNascimento = dtNasci
+        aluno.email = email
+        aluno.senha = senha
+        aluno.praticaAtividadeFisica = praticaAtividade
+        aluno.fumante = fumante
+        aluno.diabetico = diabetico
+        aluno.hipertenso = hipertencao
+        aluno.observacao = observacao
+        aluno.status = status
+
+        aluno.validate()
+
+        if (!aluno.hasErrors()) {
+            aluno.save(flush: true)
+        }
+
+        Personal personal = new Personal()
+
+        personal.nome = "carlos"
+        personal.dataNascimento = new Date()
+        personal.email = "carlos.6668@hotmail.com"
+
+        personal.validate()
+
+        if (!personal.hasErrors()) {
+            personal.save(flush: true)
+        }
+
+        AvaliacaoFisica avaliacao = new AvaliacaoFisica()
+
+        aluno = Aluno.findById(1)
+        personal = Personal.findById(2)
+
+        avaliacao.aluno = aluno
+        avaliacao.personal = personal
+        avaliacao.data = new Date()
+        avaliacao.pressao = 10.0
+        avaliacao.peso = 67
+        avaliacao.altura = 1.68
+        avaliacao.bicepsDireito = 15
+        avaliacao.bicepsEsquerdo = 15
+        avaliacao.antebracoDireito = 15
+        avaliacao.antebracoEsquerdo = 15
+        avaliacao.peito = 15
+        avaliacao.abdomen = 15
+        avaliacao.cintura = 15
+        avaliacao.quadril = 15
+        avaliacao.coxaDireita = 15
+        avaliacao.coxaEsquerda = 15
+        avaliacao.panturilhaDireita = 15
+        avaliacao.panturilhaEsquerda = 15
+        avaliacao.gorduraCorporal = 15
+        avaliacao.massaMuscular = 15
+        avaliacao.status = true
+
+        avaliacao.validate()
+
+        if (!avaliacao.hasErrors() && avaliacao.peso > 0 && avaliacao.altura > 0) {
+            avaliacao.save(flush: true)
+        }
+
+        avaliacao = AvaliacaoFisica.findById(1)
+
+        then:
+        personal != null
+        aluno != null
+        avaliacao != null
+
+        where:
+        nome | dtNasci | email | senha | praticaAtividade | fumante | diabetico | hipertencao | observacao | status
+        "carlos" | new Date() | "carlos.668@hotmail.com" | "12345678" | true | false | true | false | "aaaaaaa" | true
+
     }
 
-    void "Test the create action returns the correct model"() {
-        when: "The create action is executed"
-        controller.create()
+    void "Listar Avaliacao fisica ativa"(){
 
-        then: "The model is correctly created"
-        model.avaliacaoFisicaInstance != null
+        when:
+        def resposta
+        Aluno aluno = new Aluno()
+
+        aluno.nome = nome
+        aluno.dataNascimento = dtNasci
+        aluno.email = email
+        aluno.senha = senha
+        aluno.praticaAtividadeFisica = praticaAtividade
+        aluno.fumante = fumante
+        aluno.diabetico = diabetico
+        aluno.hipertenso = hipertencao
+        aluno.observacao = observacao
+        aluno.status = true
+
+        aluno.validate()
+
+        if (!aluno.hasErrors()) {
+            aluno.save(flush: true)
+        }
+
+        Personal personal = new Personal()
+
+        personal.nome = "carlos"
+        personal.dataNascimento = new Date()
+        personal.email = "carlos.6668@hotmail.com"
+
+        personal.validate()
+
+        if (!personal.hasErrors()) {
+            personal.save(flush: true)
+        }
+
+        AvaliacaoFisica avaliacao = new AvaliacaoFisica()
+
+        aluno = Aluno.findById(1)
+        personal = Personal.findById(2)
+
+        avaliacao.aluno = aluno
+        avaliacao.personal = personal
+        avaliacao.data = new Date()
+        avaliacao.pressao = 10.0
+        avaliacao.peso = 67
+        avaliacao.altura = 1.68
+        avaliacao.bicepsDireito = 15
+        avaliacao.bicepsEsquerdo = 15
+        avaliacao.antebracoDireito = 15
+        avaliacao.antebracoEsquerdo = 15
+        avaliacao.peito = 15
+        avaliacao.abdomen = 15
+        avaliacao.cintura = 15
+        avaliacao.quadril = 15
+        avaliacao.coxaDireita = 15
+        avaliacao.coxaEsquerda = 15
+        avaliacao.panturilhaDireita = 15
+        avaliacao.panturilhaEsquerda = 15
+        avaliacao.gorduraCorporal = 15
+        avaliacao.massaMuscular = 15
+        avaliacao.status = true
+
+        avaliacao.validate()
+
+        if (!avaliacao.hasErrors() && avaliacao.peso > 0 && avaliacao.altura > 0) {
+            avaliacao.save(flush: true)
+        }
+
+        avaliacao = AvaliacaoFisica.findById(1)
+
+
+        if (aluno != null) {
+            resposta = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
+            //resposta = "OK"
+        }
+
+        then:
+        //aluno.avalicoesFisicas !=  null
+        resposta != null
+        avaliacao != null
+        personal != null
+        aluno != null
+
+        where:
+        nome | dtNasci | email | senha | praticaAtividade | fumante | diabetico | hipertencao | observacao | status
+        "carlos" | new Date() | "carlos.668@hotmail.com" | "12345678" | true | false | true | false | "aaaaaaa" | true
+
     }
 
-    void "Test the save action correctly persists an instance"() {
 
-        when: "The save action is executed with an invalid instance"
-        request.contentType = FORM_CONTENT_TYPE
-        request.method = 'POST'
-        def avaliacaoFisica = new AvaliacaoFisica()
-        avaliacaoFisica.validate()
-        controller.save(avaliacaoFisica)
-
-        then: "The create view is rendered again with the correct model"
-        model.avaliacaoFisicaInstance != null
-        view == 'create'
-
-        when: "The save action is executed with a valid instance"
-        response.reset()
-        populateValidParams(params)
-        avaliacaoFisica = new AvaliacaoFisica(params)
-
-        controller.save(avaliacaoFisica)
-
-        then: "A redirect is issued to the show action"
-        response.redirectedUrl == '/avaliacaoFisica/show/1'
-        controller.flash.message != null
-        AvaliacaoFisica.count() == 1
-    }
-
-    void "Test that the show action returns the correct model"() {
-        when: "The show action is executed with a null domain"
-        controller.show(null)
-
-        then: "A 404 error is returned"
-        response.status == 404
-
-        when: "A domain instance is passed to the show action"
-        populateValidParams(params)
-        def avaliacaoFisica = new AvaliacaoFisica(params)
-        controller.show(avaliacaoFisica)
-
-        then: "A model is populated containing the domain instance"
-        model.avaliacaoFisicaInstance == avaliacaoFisica
-    }
-
-    void "Test that the edit action returns the correct model"() {
-        when: "The edit action is executed with a null domain"
-        controller.edit(null)
-
-        then: "A 404 error is returned"
-        response.status == 404
-
-        when: "A domain instance is passed to the edit action"
-        populateValidParams(params)
-        def avaliacaoFisica = new AvaliacaoFisica(params)
-        controller.edit(avaliacaoFisica)
-
-        then: "A model is populated containing the domain instance"
-        model.avaliacaoFisicaInstance == avaliacaoFisica
-    }
-
-    void "Test the update action performs an update on a valid domain instance"() {
-        when: "Update is called for a domain instance that doesn't exist"
-        request.contentType = FORM_CONTENT_TYPE
-        request.method = 'PUT'
-        controller.update(null)
-
-        then: "A 404 error is returned"
-        response.redirectedUrl == '/avaliacaoFisica/index'
-        flash.message != null
-
-
-        when: "An invalid domain instance is passed to the update action"
-        response.reset()
-        def avaliacaoFisica = new AvaliacaoFisica()
-        avaliacaoFisica.validate()
-        controller.update(avaliacaoFisica)
-
-        then: "The edit view is rendered again with the invalid instance"
-        view == 'edit'
-        model.avaliacaoFisicaInstance == avaliacaoFisica
-
-        when: "A valid domain instance is passed to the update action"
-        response.reset()
-        populateValidParams(params)
-        avaliacaoFisica = new AvaliacaoFisica(params).save(flush: true)
-        controller.update(avaliacaoFisica)
-
-        then: "A redirect is issues to the show action"
-        response.redirectedUrl == "/avaliacaoFisica/show/$avaliacaoFisica.id"
-        flash.message != null
-    }
-
-    void "Test that the delete action deletes an instance if it exists"() {
-        when: "The delete action is called for a null instance"
-        request.contentType = FORM_CONTENT_TYPE
-        request.method = 'DELETE'
-        controller.delete(null)
-
-        then: "A 404 is returned"
-        response.redirectedUrl == '/avaliacaoFisica/index'
-        flash.message != null
-
-        when: "A domain instance is created"
-        response.reset()
-        populateValidParams(params)
-        def avaliacaoFisica = new AvaliacaoFisica(params).save(flush: true)
-
-        then: "It exists"
-        AvaliacaoFisica.count() == 1
-
-        when: "The domain instance is passed to the delete action"
-        controller.delete(avaliacaoFisica)
-
-        then: "The instance is deleted"
-        AvaliacaoFisica.count() == 0
-        response.redirectedUrl == '/avaliacaoFisica/index'
-        flash.message != null
-    }
 }
