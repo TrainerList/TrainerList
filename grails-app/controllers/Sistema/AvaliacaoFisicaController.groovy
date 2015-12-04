@@ -46,7 +46,7 @@ class AvaliacaoFisicaController {
 
         Personal personal = Personal.findById(session["userId"])
 
-        avaliacaoFisicaInstance.status = true
+       avaliacaoFisicaInstance.status = true
         avaliacaoFisicaInstance.aluno = aluno
         avaliacaoFisicaInstance.personal = personal
 

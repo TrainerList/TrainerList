@@ -6,11 +6,11 @@ import grails.test.mixin.*
 import spock.lang.*
 
 @TestFor(AlunoController)
-@Mock([Aluno, Personal])
+@Mock([Aluno, Personal, AvaliacaoFisica])
 
 class AlunoControllerSpec extends Specification {
 
-    void "adicionar aluno a lista"() {
+    void "US07 - adicionar aluno a lista"() {
 
         when:
         def resposta
@@ -66,7 +66,7 @@ class AlunoControllerSpec extends Specification {
 
     }
 
-    void "cadastrar aluno com sucesso"() {
+    void "US04 - cadastrar aluno com sucesso"() {
 
         when:
         def result
@@ -107,4 +107,184 @@ class AlunoControllerSpec extends Specification {
         "carlos" | new Date() | "carlos.668@hotmail.com" | "12345678" | true | false | true | false | "aaaaaaa" | true
         "dias" | new Date() | "carlosDias.668@hotmail.com" | "12345678" | true | false | true | false | "bbbbbbb" | true
     }
+
+    void "US34 - Listar Todas as Avaliacao fisica ativa do Aluno"(){
+
+        when:
+        def resposta
+        Aluno aluno = new Aluno()
+
+        aluno.nome = nome
+        aluno.dataNascimento = dtNasci
+        aluno.email = email
+        aluno.senha = senha
+        aluno.praticaAtividadeFisica = praticaAtividade
+        aluno.fumante = fumante
+        aluno.diabetico = diabetico
+        aluno.hipertenso = hipertencao
+        aluno.observacao = observacao
+        aluno.status = true
+
+        aluno.validate()
+
+        if (!aluno.hasErrors()) {
+            aluno.save(flush: true)
+        }
+
+        Personal personal = new Personal()
+
+        personal.nome = "carlos"
+        personal.dataNascimento = new Date()
+        personal.email = "carlos.6668@hotmail.com"
+
+        personal.validate()
+
+        if (!personal.hasErrors()) {
+            personal.save(flush: true)
+        }
+
+        AvaliacaoFisica avaliacao = new AvaliacaoFisica()
+
+        aluno = Aluno.findById(1)
+        personal = Personal.findById(2)
+
+        avaliacao.aluno = aluno
+        avaliacao.personal = personal
+        avaliacao.data = new Date()
+        avaliacao.pressao = 10.0
+        avaliacao.peso = 67
+        avaliacao.altura = 1.68
+        avaliacao.bicepsDireito = 15
+        avaliacao.bicepsEsquerdo = 15
+        avaliacao.antebracoDireito = 15
+        avaliacao.antebracoEsquerdo = 15
+        avaliacao.peito = 15
+        avaliacao.abdomen = 15
+        avaliacao.cintura = 15
+        avaliacao.quadril = 15
+        avaliacao.coxaDireita = 15
+        avaliacao.coxaEsquerda = 15
+        avaliacao.panturilhaDireita = 15
+        avaliacao.panturilhaEsquerda = 15
+        avaliacao.gorduraCorporal = 15
+        avaliacao.massaMuscular = 15
+        avaliacao.status = true
+
+        avaliacao.validate()
+
+        if (!avaliacao.hasErrors() && avaliacao.peso > 0 && avaliacao.altura > 0) {
+            avaliacao.save(flush: true)
+        }
+
+        avaliacao = AvaliacaoFisica.findById(1)
+
+
+        if (aluno != null) {
+            resposta = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
+
+        }
+
+        then:
+        resposta != null
+        avaliacao != null
+        personal != null
+        aluno != null
+
+        where:
+        nome | dtNasci | email | senha | praticaAtividade | fumante | diabetico | hipertencao | observacao | status
+        "carlos" | new Date() | "carlos.668@hotmail.com" | "12345678" | true | false | true | false | "aaaaaaa" | true
+
+    }
+
+    void "US16 - Listar Avaliacao fisica ativa do Aluno"(){
+
+        when:
+        def resposta
+        Aluno aluno = new Aluno()
+
+        aluno.nome = nome
+        aluno.dataNascimento = dtNasci
+        aluno.email = email
+        aluno.senha = senha
+        aluno.praticaAtividadeFisica = praticaAtividade
+        aluno.fumante = fumante
+        aluno.diabetico = diabetico
+        aluno.hipertenso = hipertencao
+        aluno.observacao = observacao
+        aluno.status = true
+
+        aluno.validate()
+
+        if (!aluno.hasErrors()) {
+            aluno.save(flush: true)
+        }
+
+        Personal personal = new Personal()
+
+        personal.nome = "carlos"
+        personal.dataNascimento = new Date()
+        personal.email = "carlos.6668@hotmail.com"
+
+        personal.validate()
+
+        if (!personal.hasErrors()) {
+            personal.save(flush: true)
+        }
+
+        AvaliacaoFisica avaliacao = new AvaliacaoFisica()
+
+        aluno = Aluno.findById(1)
+        personal = Personal.findById(2)
+
+        avaliacao.aluno = aluno
+        avaliacao.personal = personal
+        avaliacao.data = new Date()
+        avaliacao.pressao = 10.0
+        avaliacao.peso = 67
+        avaliacao.altura = 1.68
+        avaliacao.bicepsDireito = 15
+        avaliacao.bicepsEsquerdo = 15
+        avaliacao.antebracoDireito = 15
+        avaliacao.antebracoEsquerdo = 15
+        avaliacao.peito = 15
+        avaliacao.abdomen = 15
+        avaliacao.cintura = 15
+        avaliacao.quadril = 15
+        avaliacao.coxaDireita = 15
+        avaliacao.coxaEsquerda = 15
+        avaliacao.panturilhaDireita = 15
+        avaliacao.panturilhaEsquerda = 15
+        avaliacao.gorduraCorporal = 15
+        avaliacao.massaMuscular = 15
+        avaliacao.status = true
+
+        avaliacao.validate()
+
+        if (!avaliacao.hasErrors() && avaliacao.peso > 0 && avaliacao.altura > 0) {
+            avaliacao.save(flush: true)
+        }
+
+        avaliacao = AvaliacaoFisica.findById(1)
+
+
+        if (aluno != null) {
+            resposta = AvaliacaoFisica.findByAlunoAndStatus(aluno, true)
+
+        }
+
+        then:
+        resposta != null
+        avaliacao != null
+        personal != null
+        aluno != null
+
+        where:
+        nome | dtNasci | email | senha | praticaAtividade | fumante | diabetico | hipertencao | observacao | status
+        "carlos" | new Date() | "carlos.668@hotmail.com" | "12345678" | true | false | true | false | "aaaaaaa" | true
+
+    }
+
+
+
+
 }

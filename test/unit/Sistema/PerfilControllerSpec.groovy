@@ -17,7 +17,7 @@ class PerfilControllerSpec extends Specification {
     def cleanup() {
     }
 
-    void "logar usuario ativo"() {
+    void "US01 - logar usuario ativo"() {
 
         when:
         def result
