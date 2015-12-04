@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8080/" />
+<title>US09_CriarSerie</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">US09_CriarSerie</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/TrainerList/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>1@1.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=senha</td>
+	<td>123123123</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=logar</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=img[alt=&quot;Treino&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Adicionar Treino</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Série</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=exercicio</td>
+	<td>label=Bench Press</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=ateFalha</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=tempoIntervalo</td>
+	<td>60</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add Série</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=exercicio</td>
+	<td>label=Bike</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>css=option[value=&quot;215&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=minutos</td>
+	<td>10</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=descricao</td>
+	<td>Treino teste 1</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dataTermino_month</td>
+	<td>label=Janeiro</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dataTermino_year</td>
+	<td>label=2016</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>id=create</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/TrainerList/treino/listarTreino/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=tabelaTreinos</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+</body>
+</html>

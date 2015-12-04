@@ -4,56 +4,71 @@
 <head profile="http://selenium-ide.openqa.org/profiles/test-case">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link rel="selenium.base" href="http://localhost:8080/" />
-<title>US07 - Adicionar aluno a lista</title>
+<title>US10_EditarSerie</title>
 </head>
 <body>
 <table cellpadding="1" cellspacing="1" border="1">
 <thead>
-<tr><td rowspan="1" colspan="3">US07 - Adicionar aluno a lista</td></tr>
+<tr><td rowspan="1" colspan="3">US10_EditarSerie</td></tr>
 </thead><tbody>
 <tr>
 	<td>open</td>
-	<td>/TrainerList/perfil/index</td>
+	<td>/TrainerList/</td>
 	<td></td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=email</td>
-	<td>personal@personal.com</td>
+	<td>1@1.com</td>
 </tr>
 <tr>
 	<td>type</td>
 	<td>id=senha</td>
-	<td>12345678</td>
+	<td>123123123</td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>name=logar</td>
-	<td></td>
-</tr>
-<tr>
-	<td>clickAndWait</td>
-	<td>link=Adicionar Aluno</td>
+	<td>id=logar</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Adicionar</td>
-	<td></td>
-</tr>
-<tr>
-	<td>click</td>
-	<td>link=Remover</td>
-	<td></td>
-</tr>
-<tr>
-	<td>assertConfirmation</td>
-	<td>Realmente quer remover o Aluno?</td>
+	<td>css=img[alt=&quot;Treino&quot;]</td>
 	<td></td>
 </tr>
 <tr>
 	<td>clickAndWait</td>
-	<td>link=Logoff</td>
+	<td>css=img[alt=&quot;Remover&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dataTermino_month</td>
+	<td>label=Abril</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=dataTermino_year</td>
+	<td>label=2018</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=descricao</td>
+	<td>EditadoTeste</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=_action_update</td>
+	<td></td>
+</tr>
+<tr>
+	<td>open</td>
+	<td>/TrainerList/treino/listarTreino</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertElementPresent</td>
+	<td>id=EditadoTeste</td>
 	<td></td>
 </tr>
 

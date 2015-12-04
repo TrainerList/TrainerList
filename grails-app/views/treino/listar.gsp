@@ -24,7 +24,7 @@
             <tbody>
             <g:each in="${treinos}" status="i" var="treino">
                 <tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
-                    <td>
+                    <td id="${treino.descricao}">
                         ${fieldValue(bean:treino, field: "descricao")}
 
                         &nbsp<g:link action="show" resource="${treino}" ><asset:image src="/skin/visualizar_20.png" alt="Vizualizar"/></g:link>
