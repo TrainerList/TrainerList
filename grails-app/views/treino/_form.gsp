@@ -66,9 +66,9 @@
 									Intevalo: ${seriesExercicio.tempoIntervalo} seg
 								</g:else>
 							</li>
-
-
-								<li><g:link action="removerSerieExercicio" resource="${treinoInstance}" id="${seriesExercicio.id}" onclick="return confirm('Confirmar Remoção?');">
+								<li><g:link controller="treino" action="removerSerieExercicio" resource="${treinoInstance}" id="${treinoInstance.id}"
+											params='[serieID:"${seriesExercicio.id}"]'
+											nclick="return confirm('Confirmar Remoção?');">
 										<asset:image src="/skin/inativar_20.png" alt="Remover"/>
 									</g:link>
 								</li>

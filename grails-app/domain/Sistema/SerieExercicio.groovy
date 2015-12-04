@@ -9,6 +9,7 @@ class SerieExercicio {
     Integer tempoIntervalo
     Integer minutos
     Boolean status
+    Treino treino
 
     static belongsTo = [Treino]
 

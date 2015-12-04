@@ -15,7 +15,7 @@
     </div>
 
     <g:if test="${treinos.size() > 0}" >
-        <table>
+        <table id="tabelaTreinos">
             <thead>
             <tr>
                 <g:sortableColumn property="nome" title="${message(code: 'treinos.descricao.label', default: 'Descricao')}" />

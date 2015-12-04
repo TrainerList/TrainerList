@@ -4,7 +4,7 @@ package Sistema
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
-@Transactional(readOnly = true)
+@Transactional(readOnly = false)
 class SerieExercicioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -12,7 +12,6 @@ class SerieExercicioController {
     def inativar(SerieExercicio serieExercicioInstance){
 
         serieExercicioInstance.status = false
-
 
         serieExercicioInstance.validate()
 
@@ -49,7 +48,9 @@ class SerieExercicioController {
     }
 
     def edit(SerieExercicio serieExercicioInstance) {
-        respond serieExercicioInstance
+        SerieExercicio serieExercicio = SerieExercicio.findById(params.id )
+
+        respond serieExercicioInstance:serieExercicio
     }
 
     @Transactional

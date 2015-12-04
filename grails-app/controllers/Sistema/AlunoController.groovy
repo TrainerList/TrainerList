@@ -106,8 +106,6 @@ class AlunoController {
         }else if (tipo == "AF") {
             aluno.avalicoesFisicas = AvaliacaoFisica.findAllByAlunoAndStatus(aluno, true)
 
-            //aluno.avalicoesFisicas.sort(it.data)
-
             render(view: "areaAluno", model: [avaliacoesFisicas: aluno.avalicoesFisicas,tipoLoad:tipo])
         }
     }

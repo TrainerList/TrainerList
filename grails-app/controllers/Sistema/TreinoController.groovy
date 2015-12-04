@@ -12,6 +12,7 @@ class TreinoController {
     static Aluno aluno
     static Treino newTreino
     static Boolean editar = false
+    static def seriesRemover = []
 
     def listarTreino() {
         if ((aluno == null || aluno.id != params.id) && (params.id != null)) {
@@ -72,6 +73,7 @@ class TreinoController {
 
         serieExercicio.status = true
         serieExercicio.exercicio = exerc
+        serieExercicio.treino = newTreino
 
         newTreino.addToSeriesExercicios(serieExercicio)
 
@@ -84,16 +86,22 @@ class TreinoController {
 
     def removerSerieExercicio(Treino treinoInstance){
         if (treinoInstance != null) {
-
             for (int i =0; i < treinoInstance.seriesExercicios.size(); i++) {
-                if (treinoInstance.seriesExercicios[i].id == params.id){
+                if (treinoInstance.seriesExercicios[i].id == params.int("serieID")){
                     treinoInstance.removeFromSeriesExercicios(treinoInstance.seriesExercicios[i])
+
+                    seriesRemover.add(params.int("serieID"))
+
                     break;
                 }
             }
         }
 
-        render(view: "create", model: [treinoInstance:treinoInstance])
+        if (treinoInstance.id == null) {
+            render(view: "create", model: [treinoInstance: treinoInstance])
+        }else{
+            render(view: "edit", model: [treinoInstance: treinoInstance])
+        }
     }
 
     def inativar(){
@@ -126,6 +134,8 @@ class TreinoController {
 
     def create() {
         editar = false
+
+        seriesRemover = []
 
         newTreino = new Treino()
 
@@ -168,6 +178,8 @@ class TreinoController {
     def edit(Treino treinoInstance) {
         editar = true
 
+        seriesRemover = []
+
         treinoInstance.seriesExercicios = Treino.findById(treinoInstance.id).seriesExercicios
 
         respond treinoInstance
@@ -185,7 +197,21 @@ class TreinoController {
             return
         }
 
-        treinoInstance.save flush:true
+        if (seriesRemover != null){
+            for (int i = 0; i < seriesRemover.size(); i++){
+                for (int j = (treinoInstance.seriesExercicios.size()-1); j >= 0; j--){
+                    if (treinoInstance.seriesExercicios[j].id == seriesRemover[i]){
+                        treinoInstance.seriesExercicios.remove(treinoInstance.seriesExercicios[j])
+
+                        SerieExercicio serieExercicio = SerieExercicio.findById(seriesRemover[i])
+
+                        serieExercicio.delete();
+                    }
+                }
+            }
+        }
+
+        treinoInstance.save(flush:true)
 
         redirect(action: "listarTreino")
     }
