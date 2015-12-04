@@ -97,7 +97,7 @@ class TreinoController {
             }
         }
 
-        if (treinoInstance.id == null) {
+        if (treinoInstance == null) {
             render(view: "create", model: [treinoInstance: treinoInstance])
         }else{
             render(view: "edit", model: [treinoInstance: treinoInstance])

@@ -43,7 +43,7 @@
     </g:if>
     <g:elseif test="${avaliacoesFisicas != null}">
         <g:if test="${avaliacoesFisicas.size() > 0}" >
-            <table>
+            <table id="tbAvalicoesFisicas">
                 <thead>
                 <tr>
                     <g:sortableColumn property="nome" title="${message(code: 'avaliacoesFisicas.data.label', default: 'Descricao')}" />
